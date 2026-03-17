@@ -435,7 +435,8 @@ section{padding:96px 0;position:relative}
 
 /* ════════════ TABLE ════════════ */
 #season{background:var(--d2);border-top:1px solid var(--br)}
-.tbl{width:100%;border-collapse:collapse}
+.tbl-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;border-radius:var(--rs)}
+.tbl{width:100%;border-collapse:collapse;min-width:500px}
 .tbl th{font-family:var(--mono);font-size:8.5px;letter-spacing:.22em;color:var(--w3);text-transform:uppercase;padding:14px 20px;text-align:left;border-bottom:1px solid rgba(0,56,168,.22)}
 .tbl td{padding:16px 20px;font-size:14px;border-bottom:1px solid var(--br2)}
 .tbl tbody tr{transition:background .2s}
@@ -470,84 +471,257 @@ footer{background:var(--d);border-top:1px solid var(--br);padding:64px 0 44px}
 
 /* ════════════ PRINT ════════════ */
 @media print{
-  #nav,.ticker,.toast,footer,.nav-right{display:none!important}
+  #nav,.ticker,.toast,footer{display:none!important}
   body{background:#fff!important;color:#000!important}
   section{padding:20px 0!important;break-inside:avoid}
   .hero-bg,.hero-grid{display:none}
 }
 
-/* ════════════ RESPONSIVE ════════════ */
-@media(max-width:1100px){
-  .container{padding:0 36px}
-  .nav-in{padding:0 36px}
-  .ig-wrap{grid-template-columns:290px 1fr;gap:24px}
-}
-@media(max-width:900px){
-  .container{padding:0 24px}
-  .nav-in{padding:0 24px}
-  #hero{grid-template-columns:1fr;min-height:auto;padding-bottom:56px}
-  .hero-r{display:none}
-  .hero-l{padding:88px 24px 48px}
-  .hero-glyph{font-size:clamp(160px,45vw,300px)}
+/* ══════════════════════════════════════
+   RESPONSIVE — MOBILE FIRST
+   Breakpoints: 1024 / 768 / 600 / 420
+══════════════════════════════════════ */
+
+/* ─── 1024px — Tablet Landscape ─── */
+@media(max-width:1024px){
+  .container{padding:0 32px}
+  .pcard{width:310px;height:468px}
+  .c-num{font-size:56px}
+  .c-nm{font-size:32px}
   .stats-g{grid-template-columns:repeat(3,1fr)}
-  .ig-wrap{grid-template-columns:1fr;gap:20px}
-  .ig-identity{display:grid;grid-template-columns:auto 1fr;gap:20px;align-items:start}
-  .ig-av-ring{margin-bottom:0;width:76px;height:76px}
-  .dna-layout,.pos-layout,.phys-layout,.strengths-layout,.two-col{grid-template-columns:1fr;gap:20px}
-  .match-g,.vid-grid,.news-g{grid-template-columns:repeat(2,1fr);gap:12px}
-  .ach-g{grid-template-columns:repeat(2,1fr);gap:12px}
-  .phys-grid{grid-template-columns:repeat(3,1fr)}
-  .ft-g{grid-template-columns:repeat(2,1fr);gap:24px}
-  .nav-links{display:none}
-  .hamburger{display:flex}
-  .tl-wrap{padding:0 8px}
-  section{padding:64px 0}
-  .sec-ttl{margin-bottom:32px}
-  .hero-name{font-size:clamp(52px,12vw,88px)}
+  .sb{padding:32px 22px}
+  .sb-n{font-size:56px}
+  .dna-layout{grid-template-columns:1fr 1fr;gap:28px}
+  .pos-layout{grid-template-columns:1fr 1fr;gap:28px}
+  .phys-layout{grid-template-columns:1fr 1.5fr;gap:28px}
+  .strengths-layout{grid-template-columns:1fr 1fr;gap:28px}
+  .match-g{grid-template-columns:repeat(2,1fr);gap:12px}
+  .vid-grid{grid-template-columns:repeat(2,1fr);gap:16px}
+  .news-g{grid-template-columns:repeat(2,1fr);gap:16px}
+  .ach-g{grid-template-columns:repeat(4,1fr);gap:12px}
+  .ft-g{grid-template-columns:1fr 1fr 1fr;gap:28px}
+  .tl-wrap{padding:0 24px}
+  section{padding:80px 0}
 }
+
+/* ─── 768px — Tablet Portrait ─── */
+@media(max-width:768px){
+  .container{padding:0 22px}
+
+  /* Hero — single column, no card */
+  #hero{grid-template-columns:1fr;min-height:auto}
+  .hero-r{display:none!important}
+  .hero-l{padding:96px 22px 56px}
+  .hero-glyph{font-size:clamp(160px,44vw,300px)}
+  .hero-name{font-size:clamp(52px,12vw,90px)}
+  .hero-tag{font-size:9px;letter-spacing:.22em}
+  .hero-pos{font-size:10px;letter-spacing:.18em}
+  .hero-pills{gap:7px;flex-wrap:wrap}
+  .bio-grid{grid-template-columns:1fr 1fr;gap:14px 20px}
+  .live-badge{font-size:9px}
+
+  /* Stats */
+  .stats-g{grid-template-columns:repeat(3,1fr);gap:1px}
+  .sb{padding:28px 18px}
+  .sb-n{font-size:52px}
+  .sb-ic{font-size:16px}
+
+  /* IG banner */
+  .ig-banner{padding:16px 0}
+  .ig-banner-handle{font-size:14px}
+
+  /* DNA / Charts */
+  .dna-layout{grid-template-columns:1fr;gap:20px}
+  .two-col{grid-template-columns:1fr;gap:20px}
+
+  /* Position */
+  .pos-layout{grid-template-columns:1fr;gap:20px}
+  .pos-row{padding:14px 0}
+  .pos-val{font-size:26px}
+
+  /* Videos */
+  .vid-grid{grid-template-columns:repeat(2,1fr);gap:14px}
+
+  /* Physical */
+  .phys-layout{grid-template-columns:1fr;gap:24px}
+  .phys-silhouette{flex-direction:row;justify-content:center;gap:32px}
+  .phys-num{font-size:60px}
+  .phys-grid{grid-template-columns:repeat(3,1fr);gap:12px}
+  .phys-box-val{font-size:36px}
+  .compare-wrap{gap:12px}
+
+  /* Matches */
+  .match-g{grid-template-columns:repeat(2,1fr);gap:12px}
+
+  /* Timeline */
+  .tl-wrap{padding:0 0}
+  .milestone.odd,.milestone.even{grid-template-columns:1fr 56px 1fr}
+  .m-yr{font-size:36px}
+  .m-title{font-size:17px}
+  .m-vl{min-height:40px}
+
+  /* Achievements */
+  .ach-g{grid-template-columns:repeat(2,1fr);gap:12px}
+
+  /* Strengths */
+  .strengths-layout{grid-template-columns:1fr;gap:20px}
+
+  /* Press */
+  .news-g{grid-template-columns:repeat(2,1fr);gap:14px}
+
+  /* Table */
+  .tbl-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch}
+  .tbl{min-width:560px}
+  .tbl th,.tbl td{padding:12px 14px}
+
+  /* Footer */
+  .ft-g{grid-template-columns:1fr 1fr;gap:24px}
+
+  /* Sections */
+  section{padding:68px 0}
+  .sec-ttl{font-size:clamp(38px,8vw,64px);margin-bottom:36px}
+}
+
+/* ─── 600px — Mobile ─── */
 @media(max-width:600px){
   .container{padding:0 16px}
-  .nav-in{padding:0 16px}
-  #hero{padding-top:56px}
-  .hero-l{padding:60px 16px 40px}
-  .hero-name{font-size:clamp(46px,13vw,78px)}
+
+  /* Hero */
+  .hero-l{padding:80px 16px 48px}
+  .hero-name{font-size:clamp(48px,13.5vw,76px)}
+  .hero-glyph{font-size:clamp(140px,42vw,240px)}
   .hero-pills{gap:5px}
-  .hpill{font-size:8px;padding:4px 9px}
-  .bio-grid{gap:10px 16px}
+  .hpill{font-size:7.5px;padding:4px 9px}
+  .bio-grid{grid-template-columns:1fr 1fr;gap:12px 14px}
+  .br span{font-size:14px}
+  .hero-hr{margin:18px 0}
+  .live-badge{margin-top:18px}
+
+  /* Stats — 2 col */
   .stats-g{grid-template-columns:repeat(2,1fr)}
-  .sb{padding:22px 16px}
-  .sb-n{font-size:50px}
-  .ig-identity{grid-template-columns:1fr;text-align:center}
-  .ig-av-ring{margin:0 auto 14px;width:80px;height:80px}
-  .ig-stats-row{max-width:260px;margin:0 auto 20px}
-  .ig-follow-cta{max-width:280px;margin-left:auto;margin-right:auto}
-  .ig-note{justify-content:center}
-  .ig-cell-main{grid-row:span 1;aspect-ratio:1}
-  .match-g,.vid-grid,.news-g,.ach-g{grid-template-columns:1fr;gap:10px}
+  .sb{padding:22px 14px}
+  .sb-n{font-size:46px}
+  .sb-l{font-size:7.5px}
+  .sb-c{display:none}
+
+  /* IG Banner */
+  .ig-banner-inner{flex-direction:column;align-items:flex-start;gap:14px}
+  .ig-banner-btn{width:100%;justify-content:center}
+
+  /* Videos → single col */
+  .vid-grid{grid-template-columns:1fr;gap:12px}
+
+  /* Physical */
+  .phys-layout{grid-template-columns:1fr}
+  .phys-silhouette{flex-direction:row;gap:24px}
+  .phys-num{font-size:52px}
   .phys-grid{grid-template-columns:repeat(2,1fr);gap:10px}
-  .tl-wrap{padding:0}
-  .milestone.odd,.milestone.even{grid-template-columns:1fr 42px 1fr}
-  .m-yr{font-size:30px}
+  .phys-box{padding:16px 12px}
+  .phys-box-val{font-size:32px}
+  .phys-box-label{font-size:7.5px;letter-spacing:.14em}
+  .compare-wrap{margin-top:20px;gap:10px}
+  .cmp-label{width:76px;font-size:8px}
+  .cmp-val{font-size:18px;width:32px}
+  .cmp-note{width:30px;font-size:7px}
+
+  /* Matches → single col */
+  .match-g{grid-template-columns:1fr;gap:10px}
+  .mc-score{font-size:30px}
+
+  /* Timeline — tighter */
+  .milestone.odd,.milestone.even{grid-template-columns:1fr 44px 1fr}
+  .m-yr{font-size:28px}
   .m-title{font-size:15px}
-  .m-desc{font-size:12px}
-  .m-l{padding-right:12px!important}
-  .m-r{padding-left:12px!important}
+  .m-desc{font-size:12px;line-height:1.55}
+  .m-badge{font-size:7px;padding:2px 8px}
+  .m-l{padding-right:10px!important}
+  .m-r{padding-left:10px!important}
+  .m-vl{min-height:36px}
+  .m-dot{width:22px;height:22px}
+
+  /* Achievements → 2 col */
+  .ach-g{grid-template-columns:repeat(2,1fr);gap:10px}
+  .ach{padding:20px 14px}
+  .ach-ic{font-size:28px;margin-bottom:8px}
+  .ach-ttl{font-size:16px}
+
+  /* Strengths */
+  .str-item{padding:16px 14px;gap:12px}
+  .str-ic{width:36px;height:36px;font-size:16px;flex-shrink:0}
+  .str-body h4{font-size:16px}
+  .str-body p{font-size:12px}
+
+  /* Press → single col */
+  .news-g{grid-template-columns:1fr;gap:10px}
+  .nc{padding:20px 16px}
+
+  /* Charts */
   .chart-card{padding:18px 14px}
-  .ft-g{grid-template-columns:1fr;gap:20px}
-  .ext-links{gap:7px}
+  .cc-label{font-size:8.5px;letter-spacing:.16em}
+
+  /* Footer */
+  .ft-g{grid-template-columns:1fr;gap:18px}
+  .ft-brand .ft-nm{font-size:clamp(32px,10vw,52px)}
+  .ft-bot{flex-direction:column;align-items:flex-start;gap:12px}
+  .ft-copy{font-size:8px}
+
+  /* External links */
+  .ext-links{gap:7px;flex-wrap:wrap}
   .ext-link{padding:8px 12px;font-size:8.5px}
-  section{padding:50px 0}
-  .sec-ttl{font-size:clamp(34px,10vw,56px);margin-bottom:24px}
-  .strengths-layout{grid-template-columns:1fr}
-  .pos-layout{grid-template-columns:1fr}
-  .compare-wrap{gap:10px}
+
+  /* Sections */
+  section{padding:52px 0}
+  .sec-ttl{font-size:clamp(34px,10vw,52px);margin-bottom:22px}
+  .sec-ey{font-size:9px;letter-spacing:.22em}
 }
-@media(max-width:380px){
-  .hero-name{font-size:clamp(38px,13vw,60px)}
+
+/* ─── 420px — Small Mobile ─── */
+@media(max-width:420px){
+  .container{padding:0 12px}
+
+  /* Hero */
+  .hero-l{padding:72px 12px 40px}
+  .hero-name{font-size:clamp(40px,14vw,64px)}
+  .hero-tag{font-size:8.5px;gap:10px}
+  .hero-tag i{width:22px}
+  .bio-grid{gap:10px 12px}
+  .br label{font-size:7.5px;letter-spacing:.18em}
+  .br span{font-size:13px}
+
+  /* Stats */
   .stats-g{grid-template-columns:1fr 1fr}
-  .ig-stats-row{max-width:220px}
+  .sb-n{font-size:42px}
+  .sb-l{font-size:7px;letter-spacing:.16em}
+
+  /* Timeline — mini */
   .milestone.odd,.milestone.even{grid-template-columns:1fr 36px 1fr}
+  .m-yr{font-size:24px}
+  .m-title{font-size:14px}
+  .m-desc{font-size:11.5px}
+  .m-dot{width:18px;height:18px}
+  .m-dot.a::after,.m-dot.cur::after,.m-dot.now::after{width:6px;height:6px}
+  .m-l{padding-right:8px!important}
+  .m-r{padding-left:8px!important}
+
+  /* Physical */
+  .phys-grid{grid-template-columns:1fr 1fr}
+  .phys-silhouette{display:none}
+
+  /* Achievements → 1 col if very small */
+  .ach-g{grid-template-columns:1fr 1fr}
+  .ach{padding:16px 12px}
+  .ach-ic{font-size:24px}
+
+  /* Table */
+  .tbl th{padding:10px 10px;font-size:7.5px}
+  .tbl td{padding:12px 10px;font-size:12px}
+  .sc{font-size:18px}
+
+  section{padding:44px 0}
+  .sec-ttl{font-size:clamp(30px,11vw,46px);margin-bottom:18px}
 }
+
+
 </style>
 </head>
 <body>
@@ -685,20 +859,30 @@ footer{background:var(--d);border-top:1px solid var(--br);padding:64px 0 44px}
 /* scroll progress stays */
 #prog{z-index:201}
 
-@media(max-width:700px){
-  #nav{top:12px;max-width:calc(100vw - 24px)}
-  .nav-in{gap:6px}
-  .nl{font-size:12px;padding:7px 12px}
-  .nav-logo-pill{padding:7px 12px 7px 7px}
+@media(max-width:768px){
+  #nav{top:12px;max-width:calc(100vw - 28px)}
+  .nav-in{gap:7px}
+  .nl{font-size:12px;padding:7px 11px}
+  .nav-logo-pill{padding:6px 14px 6px 7px}
   .nav-ig-pill span.ig-label{display:none}
   .nav-ig-pill{padding:7px 12px 7px 10px}
 }
-@media(max-width:480px){
+@media(max-width:600px){
   .nav-pill-wrap{display:none}
   .nav-ig-pill span.ig-label{display:block}
-  #nav{left:16px;right:16px;transform:none;max-width:none}
-  .nav-in{justify-content:space-between}
+  #nav{left:14px;right:14px;transform:none;max-width:none;top:12px}
+  .nav-in{justify-content:space-between;gap:0}
+  .nav-logo-pill{padding:6px 12px 6px 7px}
+  .nav-badge{width:28px;height:28px;font-size:12px}
+  .nav-logo-name{font-size:12px}
 }
+@media(max-width:420px){
+  #nav{left:10px;right:10px}
+  .nav-ig-pill{padding:6px 10px 6px 8px}
+  .nav-ig-pill span.ig-label{font-size:11px}
+  .nav-logo-name{font-size:11px}
+}
+
 
 /* ════════════ INSTAGRAM BANNER ════════════ */
 .ig-banner{background:var(--d2);padding:20px 0}
@@ -1232,6 +1416,7 @@ footer{background:var(--d);border-top:1px solid var(--br);padding:64px 0 44px}
   <div class="container">
     <p class="sec-ey reveal"><i></i>Statistik</p>
     <h2 class="sec-ttl reveal">Alle<br>Saisons</h2>
+    <div class="tbl-wrap">
     <table class="tbl reveal">
       <thead><tr>
         <th>Saison</th><th>Verein</th><th>Wettbewerb</th>
@@ -1247,6 +1432,7 @@ footer{background:var(--d);border-top:1px solid var(--br);padding:64px 0 44px}
         <tr><td class="sc">21/22</td><td class="tc">FC Zürich U21</td><td>Promotion League</td><td class="nc2">18</td><td class="nc2">0</td><td class="nc2">2</td><td class="nc2">1'210'</td><td class="nc2">7.0</td></tr>
       </tbody>
     </table>
+    </div>
   </div>
 </section>
 
