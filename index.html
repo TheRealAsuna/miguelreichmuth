@@ -884,7 +884,194 @@ footer{background:var(--d);border-top:1px solid var(--br);padding:64px 0 44px}
 }
 
 
-/* ════════════ INSTAGRAM BANNER ════════════ */
+/* ══════════════════════════════════════
+   ADMIN SYSTEM — MULTI-USER
+══════════════════════════════════════ */
+
+/* ── Lock trigger ── */
+#admin-trigger{
+  position:fixed;bottom:20px;right:20px;z-index:299;
+  width:40px;height:40px;border-radius:50%;
+  background:rgba(6,8,18,.7);border:1px solid rgba(255,255,255,.1);
+  display:flex;align-items:center;justify-content:center;
+  cursor:pointer;transition:all .3s;
+  backdrop-filter:blur(12px);
+}
+#admin-trigger:hover{background:rgba(26,111,255,.2);border-color:rgba(26,111,255,.4);transform:scale(1.08)}
+#admin-trigger svg{opacity:.3;transition:opacity .2s}
+#admin-trigger:hover svg{opacity:.85}
+
+/* ── Admin bar (bottom) ── */
+#admin-bar{
+  position:fixed;bottom:20px;left:50%;transform:translateX(-50%) translateY(12px);
+  display:flex;align-items:center;gap:6px;
+  background:rgba(6,8,20,.96);
+  border:1px solid rgba(26,111,255,.35);
+  border-radius:40px;padding:7px 10px 7px 16px;
+  z-index:300;
+  box-shadow:0 8px 40px rgba(0,0,0,.7),0 0 0 1px rgba(26,111,255,.08),0 0 24px rgba(26,111,255,.1);
+  backdrop-filter:blur(24px);
+  opacity:0;pointer-events:none;
+  transition:opacity .3s,transform .3s;
+  max-width:calc(100vw - 32px);flex-wrap:wrap;
+}
+#admin-bar.visible{opacity:1;pointer-events:all;transform:translateX(-50%) translateY(0)}
+.adm-dot{width:8px;height:8px;border-radius:50%;background:var(--gr);box-shadow:0 0 8px var(--gr);animation:pulse-g 2s infinite;flex-shrink:0}
+.adm-who{font-family:var(--mono);font-size:9.5px;letter-spacing:.14em;color:var(--w3);white-space:nowrap}
+.adm-who strong{color:var(--w);font-weight:600}
+.adm-role{font-family:var(--mono);font-size:8px;letter-spacing:.12em;padding:2px 8px;border-radius:10px;margin-left:4px}
+.adm-role.master{background:rgba(240,192,64,.15);color:var(--gold);border:1px solid rgba(240,192,64,.25)}
+.adm-role.staff{background:rgba(91,155,255,.12);color:var(--bll);border:1px solid rgba(91,155,255,.2)}
+.adm-sep{width:1px;height:18px;background:rgba(255,255,255,.1);flex-shrink:0}
+.unsaved-dot{width:7px;height:7px;border-radius:50%;background:var(--gold);box-shadow:0 0 8px var(--gold);display:none;animation:pulse-g 1.5s infinite}
+.unsaved-dot.on{display:block}
+.adm-btn{
+  display:flex;align-items:center;gap:6px;
+  padding:7px 14px;border-radius:20px;
+  font-family:var(--mono);font-size:8.5px;letter-spacing:.12em;text-transform:uppercase;
+  border:1px solid;transition:all .2s;cursor:pointer;background:transparent;white-space:nowrap;
+}
+.adm-btn.save{border-color:rgba(45,255,143,.3);color:var(--gr)}
+.adm-btn.save:hover{background:rgba(45,255,143,.08);border-color:var(--gr)}
+.adm-btn.accounts{border-color:rgba(240,192,64,.3);color:var(--gold)}
+.adm-btn.accounts:hover{background:rgba(240,192,64,.08);border-color:var(--gold)}
+.adm-btn.logout{border-color:rgba(255,68,85,.25);color:var(--rd)}
+.adm-btn.logout:hover{background:rgba(255,68,85,.07);border-color:var(--rd)}
+
+/* editable fields */
+body.admin-mode [data-edit]{
+  position:relative;outline:1.5px dashed rgba(26,111,255,.4);
+  outline-offset:3px;border-radius:3px;cursor:text;transition:outline-color .2s,background .2s;
+}
+body.admin-mode [data-edit]:hover{outline-color:rgba(26,111,255,.8);background:rgba(26,111,255,.06)}
+body.admin-mode [data-edit]:focus{outline-color:var(--bll);background:rgba(26,111,255,.1);outline-style:solid}
+
+/* ── Modal base ── */
+.adm-overlay{
+  position:fixed;inset:0;background:rgba(2,3,8,.94);z-index:400;
+  display:flex;align-items:center;justify-content:center;
+  opacity:0;pointer-events:none;transition:opacity .25s;
+  backdrop-filter:blur(18px);padding:16px;
+}
+.adm-overlay.open{opacity:1;pointer-events:all}
+.adm-box{
+  background:var(--d2);border-radius:20px;
+  width:100%;position:relative;
+  box-shadow:0 40px 100px rgba(0,0,0,.8),0 0 0 1px rgba(255,255,255,.05);
+  transform:translateY(16px);transition:transform .25s;overflow:hidden;
+}
+.adm-overlay.open .adm-box{transform:translateY(0)}
+.adm-box-top{height:3px;width:100%}
+
+/* ── Login modal ── */
+#adm-login-modal .adm-box{max-width:420px;padding:40px 36px 32px}
+.adm-login-icon{width:52px;height:52px;border-radius:14px;display:flex;align-items:center;justify-content:center;margin-bottom:22px}
+.adm-login-title{font-family:var(--display);font-size:30px;letter-spacing:.05em;color:var(--w);margin-bottom:4px}
+.adm-login-sub{font-family:var(--mono);font-size:8.5px;letter-spacing:.2em;color:var(--w3);text-transform:uppercase;margin-bottom:28px}
+.adm-field-label{font-family:var(--mono);font-size:8.5px;letter-spacing:.2em;color:var(--w3);text-transform:uppercase;display:block;margin-bottom:7px}
+.adm-input{
+  width:100%;background:rgba(255,255,255,.04);
+  border:1px solid rgba(255,255,255,.1);border-radius:8px;
+  padding:12px 14px;color:var(--w);font-family:var(--sans);font-size:15px;
+  outline:none;transition:border-color .2s,background .2s;margin-bottom:16px;
+}
+.adm-input:focus{border-color:rgba(26,111,255,.5);background:rgba(26,111,255,.04)}
+.adm-input.err{border-color:rgba(255,68,85,.5)!important;animation:shake .3s}
+@keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
+.adm-error-msg{font-family:var(--mono);font-size:8.5px;letter-spacing:.14em;color:var(--rd);min-height:16px;margin-bottom:10px}
+.adm-submit-btn{
+  width:100%;padding:13px;border-radius:8px;border:none;
+  font-family:var(--display);font-size:20px;letter-spacing:.05em;
+  cursor:pointer;transition:all .2s;margin-bottom:10px;
+}
+.adm-cancel-btn{
+  width:100%;background:none;border:none;color:var(--w3);
+  font-family:var(--mono);font-size:8.5px;letter-spacing:.18em;
+  text-transform:uppercase;cursor:pointer;padding:6px;transition:color .2s;
+}
+.adm-cancel-btn:hover{color:var(--w)}
+
+/* ── Account manager modal ── */
+#adm-accounts-modal .adm-box{max-width:660px}
+.adm-panel-header{
+  padding:28px 32px 0;
+  display:flex;align-items:center;justify-content:space-between;
+}
+.adm-panel-title{font-family:var(--display);font-size:26px;letter-spacing:.05em;color:var(--w)}
+.adm-panel-sub{font-family:var(--mono);font-size:8px;letter-spacing:.18em;color:var(--w3);text-transform:uppercase;margin-top:3px}
+.adm-panel-close{background:none;border:none;color:var(--w3);font-size:22px;cursor:pointer;transition:color .2s;line-height:1;padding:4px}
+.adm-panel-close:hover{color:var(--w)}
+
+/* account list */
+.adm-accounts-list{padding:20px 32px;display:flex;flex-direction:column;gap:8px;max-height:320px;overflow-y:auto}
+.adm-accounts-list::-webkit-scrollbar{width:4px}
+.adm-accounts-list::-webkit-scrollbar-track{background:transparent}
+.adm-accounts-list::-webkit-scrollbar-thumb{background:rgba(255,255,255,.1);border-radius:2px}
+
+.adm-account-row{
+  display:flex;align-items:center;gap:12px;
+  padding:12px 16px;background:rgba(255,255,255,.03);
+  border:1px solid rgba(255,255,255,.07);border-radius:8px;
+  transition:border-color .2s;
+}
+.adm-account-row:hover{border-color:rgba(255,255,255,.12)}
+.adm-acc-avatar{
+  width:36px;height:36px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  font-family:var(--display);font-size:15px;color:#fff;
+  flex-shrink:0;
+}
+.adm-acc-info{flex:1}
+.adm-acc-name{font-family:var(--sans);font-size:14px;font-weight:600;color:var(--w)}
+.adm-acc-meta{font-family:var(--mono);font-size:8px;letter-spacing:.12em;color:var(--w3);text-transform:uppercase;margin-top:3px}
+.adm-acc-role{font-family:var(--mono);font-size:8px;letter-spacing:.1em;padding:2px 8px;border-radius:10px}
+.adm-acc-role.master{background:rgba(240,192,64,.15);color:var(--gold);border:1px solid rgba(240,192,64,.2)}
+.adm-acc-role.staff{background:rgba(91,155,255,.1);color:var(--bll);border:1px solid rgba(91,155,255,.18)}
+.adm-acc-del{background:none;border:1px solid rgba(255,68,85,.2);color:var(--rd);padding:5px 10px;border-radius:6px;font-family:var(--mono);font-size:8px;letter-spacing:.1em;cursor:pointer;transition:all .2s;flex-shrink:0}
+.adm-acc-del:hover{background:rgba(255,68,85,.1);border-color:var(--rd)}
+.adm-acc-self{font-family:var(--mono);font-size:8px;letter-spacing:.1em;color:var(--w3);padding:5px 10px;flex-shrink:0}
+
+/* new account form */
+.adm-new-acc{
+  padding:20px 32px 28px;
+  border-top:1px solid rgba(255,255,255,.07);
+}
+.adm-new-acc-title{font-family:var(--mono);font-size:9px;letter-spacing:.22em;color:var(--w3);text-transform:uppercase;margin-bottom:16px;display:flex;align-items:center;gap:10px}
+.adm-new-acc-title::before{content:'';display:block;width:24px;height:1px;background:var(--w3)}
+.adm-new-acc-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:10px}
+.adm-new-acc-grid .adm-input{margin-bottom:0}
+.adm-new-role-row{display:flex;gap:8px;margin-bottom:14px}
+.adm-role-btn{
+  flex:1;padding:9px;border-radius:6px;
+  font-family:var(--mono);font-size:8.5px;letter-spacing:.12em;text-transform:uppercase;
+  border:1px solid rgba(255,255,255,.1);color:var(--w3);background:transparent;
+  cursor:pointer;transition:all .2s;
+}
+.adm-role-btn.selected.staff{border-color:rgba(91,155,255,.4);color:var(--bll);background:rgba(91,155,255,.08)}
+.adm-role-btn.selected.master-r{border-color:rgba(240,192,64,.4);color:var(--gold);background:rgba(240,192,64,.08)}
+.adm-create-btn{
+  width:100%;padding:11px;border-radius:8px;border:none;
+  background:linear-gradient(135deg,var(--b),var(--bl));
+  color:#fff;font-family:var(--display);font-size:18px;letter-spacing:.05em;
+  cursor:pointer;transition:all .2s;
+  box-shadow:0 4px 18px rgba(26,111,255,.28);
+}
+.adm-create-btn:hover{transform:translateY(-1px);box-shadow:0 8px 28px rgba(26,111,255,.4)}
+.adm-form-error{font-family:var(--mono);font-size:8.5px;letter-spacing:.12em;color:var(--rd);min-height:14px;margin-bottom:8px}
+
+/* Change password mini modal */
+#adm-pw-modal .adm-box{max-width:400px;padding:36px 32px 28px}
+
+@media(max-width:600px){
+  #admin-bar{bottom:12px;padding:6px 8px 6px 12px;gap:5px}
+  .adm-who{display:none}
+  .adm-role{display:none}
+  .adm-btn{font-size:8px;padding:6px 10px}
+  .adm-new-acc-grid{grid-template-columns:1fr}
+  #adm-accounts-modal .adm-box{max-width:100%}
+  .adm-panel-header,.adm-accounts-list,.adm-new-acc{padding-left:20px;padding-right:20px}
+}
+
 .ig-banner{background:var(--d2);padding:20px 0}
 .ig-banner-inner{
   display:flex;align-items:center;justify-content:space-between;
@@ -991,8 +1178,8 @@ footer{background:var(--d);border-top:1px solid var(--br);padding:64px 0 44px}
       <div class="br"><label>Grösse / Gewicht</label><span>1,71 m · 71 kg</span></div>
       <div class="br"><label>Nationalität</label><span>🇨🇭 &amp; 🇨🇱</span></div>
       <div class="br"><label>Spielfuss</label><span>Rechts</span></div>
-      <div class="br"><label>Vertrag bis</label><span class="gold">30.06.2030</span></div>
-      <div class="br"><label>Marktwert</label><span>~500 Tsd. €</span></div>
+      <div class="br"><label>Vertrag bis</label><span class="gold" data-edit="bio-vertrag" contenteditable="false">30.06.2030</span></div>
+      <div class="br"><label>Marktwert</label><span data-edit="bio-marktwert" contenteditable="false">~500 Tsd. €</span></div>
       <div class="br"><label>Berater</label><span>Gold Kick SA</span></div>
     </div>
 
@@ -1018,9 +1205,9 @@ footer{background:var(--d);border-top:1px solid var(--br);padding:64px 0 44px}
           <div class="c-nm">MIGUEL REICHMUTH</div>
           <div class="c-sub">Zentrales Mittelfeld · 2003 · Zürich</div>
           <div class="c-stats">
-            <div class="cs"><span class="cs-v">14</span><span class="cs-l">Spiele</span></div>
-            <div class="cs"><span class="cs-v">961</span><span class="cs-l">Min.</span></div>
-            <div class="cs"><span class="cs-v">1</span><span class="cs-l">Assist</span></div>
+            <div class="cs"><span class="cs-v" data-edit="card-spiele" contenteditable="false">14</span><span class="cs-l">Spiele</span></div>
+            <div class="cs"><span class="cs-v" data-edit="card-min" contenteditable="false">961</span><span class="cs-l">Min.</span></div>
+            <div class="cs"><span class="cs-v" data-edit="card-assist" contenteditable="false">1</span><span class="cs-l">Assist</span></div>
             <div class="cs"><span class="cs-v">2030</span><span class="cs-l">Vertrag</span></div>
           </div>
         </div>
@@ -1044,11 +1231,11 @@ footer{background:var(--d);border-top:1px solid var(--br);padding:64px 0 44px}
     <p class="sec-ey reveal"><i></i>Saison 2025/26</p>
     <h2 class="sec-ttl reveal">Aktuelle<br>Statistiken</h2>
     <div class="stats-g reveal">
-      <div class="sb"><div class="sb-ic">⚽</div><div class="sb-n"><span class="counter" data-t="14">0</span></div><div class="sb-l">Einsätze</div><div class="sb-c">Super League</div></div>
-      <div class="sb"><div class="sb-ic">⏱</div><div class="sb-n"><span class="counter" data-t="961">0</span></div><div class="sb-l">Minuten gespielt</div><div class="sb-c">Super League</div></div>
-      <div class="sb"><div class="sb-ic">🎯</div><div class="sb-n"><span class="counter" data-t="1">0</span></div><div class="sb-l">Assists</div><div class="sb-c">Super League</div></div>
-      <div class="sb"><div class="sb-ic">💪</div><div class="sb-n"><span class="counter" data-t="16">0</span></div><div class="sb-l">Balleroberungen</div><div class="sb-c">Rekord vs. Winterthur</div></div>
-      <div class="sb"><div class="sb-ic">📊</div><div class="sb-n">83<span style="font-size:26px;color:var(--w3)">%</span></div><div class="sb-l">Passquote</div><div class="sb-c">Liga-Ø: ~78%</div></div>
+      <div class="sb"><div class="sb-ic">⚽</div><div class="sb-n"><span class="counter" data-t="14" data-edit="stat-einsaetze" contenteditable="false">0</span></div><div class="sb-l">Einsätze</div><div class="sb-c">Super League</div></div>
+      <div class="sb"><div class="sb-ic">⏱</div><div class="sb-n"><span class="counter" data-t="961" data-edit="stat-minuten" contenteditable="false">0</span></div><div class="sb-l">Minuten gespielt</div><div class="sb-c">Super League</div></div>
+      <div class="sb"><div class="sb-ic">🎯</div><div class="sb-n"><span class="counter" data-t="1" data-edit="stat-assists" contenteditable="false">0</span></div><div class="sb-l">Assists</div><div class="sb-c">Super League</div></div>
+      <div class="sb"><div class="sb-ic">💪</div><div class="sb-n"><span class="counter" data-t="16" data-edit="stat-ballero" contenteditable="false">0</span></div><div class="sb-l">Balleroberungen</div><div class="sb-c">Rekord vs. Winterthur</div></div>
+      <div class="sb"><div class="sb-ic">📊</div><div class="sb-n"><span data-edit="stat-passquote" contenteditable="false">83</span><span style="font-size:26px;color:var(--w3)">%</span></div><div class="sb-l">Passquote</div><div class="sb-c">Liga-Ø: ~78%</div></div>
     </div>
   </div>
 </section>
@@ -1099,16 +1286,16 @@ footer{background:var(--d);border-top:1px solid var(--br);padding:64px 0 44px}
       <div class="chart-card reveal-r">
         <p class="cc-label" style="margin-bottom:20px">Attribute im Detail</p>
         <div class="attrs-g">
-          <div class="ar"><span class="an">Pressing</span><div class="ab"><div class="af" data-w="93"></div></div><span class="av">93</span></div>
-          <div class="ar"><span class="an">Balleroberung</span><div class="ab"><div class="af" data-w="90"></div></div><span class="av">90</span></div>
-          <div class="ar"><span class="an">Passquote</span><div class="ab"><div class="af" data-w="84"></div></div><span class="av">84</span></div>
-          <div class="ar"><span class="an">Ausdauer</span><div class="ab"><div class="af" data-w="92"></div></div><span class="av">92</span></div>
-          <div class="ar"><span class="an">Zweikampf</span><div class="ab"><div class="af" data-w="86"></div></div><span class="av">86</span></div>
-          <div class="ar"><span class="an">Spielintelligenz</span><div class="ab"><div class="af" data-w="88"></div></div><span class="av">88</span></div>
-          <div class="ar"><span class="an">Antizipation</span><div class="ab"><div class="af" data-w="85"></div></div><span class="av">85</span></div>
-          <div class="ar"><span class="an">Laufbereitschaft</span><div class="ab"><div class="af" data-w="95"></div></div><span class="av">95</span></div>
-          <div class="ar"><span class="an">Schnelligkeit</span><div class="ab"><div class="af" data-w="79"></div></div><span class="av">79</span></div>
-          <div class="ar"><span class="an">Torabschluss</span><div class="ab"><div class="af" data-w="62"></div></div><span class="av">62</span></div>
+          <div class="ar"><span class="an">Pressing</span><div class="ab"><div class="af" data-w="93"></div></div><span class="av" data-edit="attr-pressing" contenteditable="false">93</span></div>
+          <div class="ar"><span class="an">Balleroberung</span><div class="ab"><div class="af" data-w="90"></div></div><span class="av" data-edit="attr-balleroberung" contenteditable="false">90</span></div>
+          <div class="ar"><span class="an">Passquote</span><div class="ab"><div class="af" data-w="84"></div></div><span class="av" data-edit="attr-passquote" contenteditable="false">84</span></div>
+          <div class="ar"><span class="an">Ausdauer</span><div class="ab"><div class="af" data-w="92"></div></div><span class="av" data-edit="attr-ausdauer" contenteditable="false">92</span></div>
+          <div class="ar"><span class="an">Zweikampf</span><div class="ab"><div class="af" data-w="86"></div></div><span class="av" data-edit="attr-zweikampf" contenteditable="false">86</span></div>
+          <div class="ar"><span class="an">Spielintelligenz</span><div class="ab"><div class="af" data-w="88"></div></div><span class="av" data-edit="attr-spielintelligenz" contenteditable="false">88</span></div>
+          <div class="ar"><span class="an">Antizipation</span><div class="ab"><div class="af" data-w="85"></div></div><span class="av" data-edit="attr-antizipation" contenteditable="false">85</span></div>
+          <div class="ar"><span class="an">Laufbereitschaft</span><div class="ab"><div class="af" data-w="95"></div></div><span class="av" data-edit="attr-laufbereitschaft" contenteditable="false">95</span></div>
+          <div class="ar"><span class="an">Schnelligkeit</span><div class="ab"><div class="af" data-w="79"></div></div><span class="av" data-edit="attr-schnelligkeit" contenteditable="false">79</span></div>
+          <div class="ar"><span class="an">Torabschluss</span><div class="ab"><div class="af" data-w="62"></div></div><span class="av" data-edit="attr-torabschluss" contenteditable="false">62</span></div>
         </div>
       </div>
     </div>
@@ -1169,12 +1356,12 @@ footer{background:var(--d);border-top:1px solid var(--br);padding:64px 0 44px}
         <p class="pitch-tag">Heatmap & Bewegungsprofil</p>
       </div>
       <div class="pos-rows reveal-r">
-        <div class="pos-row"><div class="pos-ic bl">🔄</div><div class="pos-body"><div class="pos-nm">Ballkontakte / Spiel</div><div class="pos-sb">Liga-Ø: 52</div></div><div class="pos-val">68</div></div>
-        <div class="pos-row"><div class="pos-ic gr">💪</div><div class="pos-body"><div class="pos-nm">Balleroberungen / Spiel</div><div class="pos-sb">Saisonschnitt</div></div><div class="pos-val">7.4</div></div>
-        <div class="pos-row"><div class="pos-ic bl">📐</div><div class="pos-body"><div class="pos-nm">Pässe / Spiel</div><div class="pos-sb">Kurz- & Mittelpässe</div></div><div class="pos-val">44</div></div>
-        <div class="pos-row"><div class="pos-ic gd">📏</div><div class="pos-body"><div class="pos-nm">km gelaufen / Spiel</div><div class="pos-sb">Top 5% der Liga</div></div><div class="pos-val">11.4</div></div>
-        <div class="pos-row"><div class="pos-ic gr">🏆</div><div class="pos-body"><div class="pos-nm">Zweikampfquote</div><div class="pos-sb">Gewonnene Duelle</div></div><div class="pos-val">61%</div></div>
-        <div class="pos-row"><div class="pos-ic bl">🎯</div><div class="pos-body"><div class="pos-nm">Pressings ausgelöst</div><div class="pos-sb">Pressing-Intensität</div></div><div class="pos-val">9.2</div></div>
+        <div class="pos-row"><div class="pos-ic bl">🔄</div><div class="pos-body"><div class="pos-nm">Ballkontakte / Spiel</div><div class="pos-sb">Liga-Ø: 52</div></div><div class="pos-val" data-edit="pos-ballkontakte" contenteditable="false">68</div></div>
+        <div class="pos-row"><div class="pos-ic gr">💪</div><div class="pos-body"><div class="pos-nm">Balleroberungen / Spiel</div><div class="pos-sb">Saisonschnitt</div></div><div class="pos-val" data-edit="pos-ballero" contenteditable="false">7.4</div></div>
+        <div class="pos-row"><div class="pos-ic bl">📐</div><div class="pos-body"><div class="pos-nm">Pässe / Spiel</div><div class="pos-sb">Kurz- & Mittelpässe</div></div><div class="pos-val" data-edit="pos-paesse" contenteditable="false">44</div></div>
+        <div class="pos-row"><div class="pos-ic gd">📏</div><div class="pos-body"><div class="pos-nm">km gelaufen / Spiel</div><div class="pos-sb">Top 5% der Liga</div></div><div class="pos-val" data-edit="pos-km" contenteditable="false">11.4</div></div>
+        <div class="pos-row"><div class="pos-ic gr">🏆</div><div class="pos-body"><div class="pos-nm">Zweikampfquote</div><div class="pos-sb">Gewonnene Duelle</div></div><div class="pos-val" data-edit="pos-zweikampf" contenteditable="false">61%</div></div>
+        <div class="pos-row"><div class="pos-ic bl">🎯</div><div class="pos-body"><div class="pos-nm">Pressings ausgelöst</div><div class="pos-sb">Pressing-Intensität</div></div><div class="pos-val" data-edit="pos-pressing" contenteditable="false">9.2</div></div>
       </div>
     </div>
   </div>
@@ -1284,12 +1471,12 @@ footer{background:var(--d);border-top:1px solid var(--br);padding:64px 0 44px}
       <div class="fdot w">W</div><div class="fdot w">W</div><div class="fdot d">D</div>
     </div>
     <div class="match-g reveal">
-      <div class="mc win"><div class="mc-top"><span class="mc-res win">WIN</span><span class="mc-comp">Super League</span><span class="mc-date">08.03.26</span></div><div class="mc-score">2–1</div><div class="mc-teams">FCZ vs. FC Winterthur</div><div class="mc-stats"><div class="mc-stat">Pässe <span>52</span></div><div class="mc-stat">Eroerungen <span>16</span></div><div class="mc-stat">1 Assist</div></div><div class="rating"><div class="r-circle hi">9.1</div></div></div>
-      <div class="mc draw"><div class="mc-top"><span class="mc-res draw">DRAW</span><span class="mc-comp">Super League</span><span class="mc-date">01.03.26</span></div><div class="mc-score">1–1</div><div class="mc-teams">Young Boys vs. FCZ</div><div class="mc-stats"><div class="mc-stat">Pässe <span>44</span></div><div class="mc-stat">Eroberungen <span>8</span></div><div class="mc-stat">90 Min.</div></div><div class="rating"><div class="r-circle mi">7.2</div></div></div>
-      <div class="mc loss"><div class="mc-top"><span class="mc-res loss">LOSS</span><span class="mc-comp">Super League</span><span class="mc-date">22.02.26</span></div><div class="mc-score">0–2</div><div class="mc-teams">FCZ vs. Basel</div><div class="mc-stats"><div class="mc-stat">Pässe <span>38</span></div><div class="mc-stat">Eroberungen <span>9</span></div><div class="mc-stat">68 Min.</div></div><div class="rating"><div class="r-circle lo">6.5</div></div></div>
-      <div class="mc win"><div class="mc-top"><span class="mc-res win">WIN</span><span class="mc-comp">Swiss Cup</span><span class="mc-date">15.02.26</span></div><div class="mc-score">3–0</div><div class="mc-teams">FCZ vs. Luzern</div><div class="mc-stats"><div class="mc-stat">Pässe <span>61</span></div><div class="mc-stat">Eroberungen <span>11</span></div><div class="mc-stat">90 Min.</div></div><div class="rating"><div class="r-circle hi">8.4</div></div></div>
-      <div class="mc win"><div class="mc-top"><span class="mc-res win">WIN</span><span class="mc-comp">Super League</span><span class="mc-date">08.02.26</span></div><div class="mc-score">2–0</div><div class="mc-teams">Servette vs. FCZ</div><div class="mc-stats"><div class="mc-stat">Pässe <span>47</span></div><div class="mc-stat">Eroberungen <span>10</span></div><div class="mc-stat">90 Min.</div></div><div class="rating"><div class="r-circle hi">7.8</div></div></div>
-      <div class="mc draw"><div class="mc-top"><span class="mc-res draw">DRAW</span><span class="mc-comp">Super League</span><span class="mc-date">01.02.26</span></div><div class="mc-score">0–0</div><div class="mc-teams">FCZ vs. GC Zürich</div><div class="mc-stats"><div class="mc-stat">Pässe <span>56</span></div><div class="mc-stat">Eroberungen <span>13</span></div><div class="mc-stat">90 Min.</div></div><div class="rating"><div class="r-circle mi">7.0</div></div></div>
+      <div class="mc win"><div class="mc-top"><span class="mc-res win">WIN</span><span class="mc-comp">Super League</span><span class="mc-date">08.03.26</span></div><div class="mc-score" data-edit="mc-score-1" contenteditable="false">2–1</div><div class="mc-teams">FCZ vs. FC Winterthur</div><div class="mc-stats"><div class="mc-stat">Pässe <span>52</span></div><div class="mc-stat">Eroerungen <span>16</span></div><div class="mc-stat">1 Assist</div></div><div class="rating"><div class="r-circle hi">9.1</div></div></div>
+      <div class="mc draw"><div class="mc-top"><span class="mc-res draw">DRAW</span><span class="mc-comp">Super League</span><span class="mc-date">01.03.26</span></div><div class="mc-score" data-edit="mc-score-2" contenteditable="false">1–1</div><div class="mc-teams">Young Boys vs. FCZ</div><div class="mc-stats"><div class="mc-stat">Pässe <span>44</span></div><div class="mc-stat">Eroberungen <span>8</span></div><div class="mc-stat">90 Min.</div></div><div class="rating"><div class="r-circle mi">7.2</div></div></div>
+      <div class="mc loss"><div class="mc-top"><span class="mc-res loss">LOSS</span><span class="mc-comp">Super League</span><span class="mc-date">22.02.26</span></div><div class="mc-score" data-edit="mc-score-3" contenteditable="false">0–2</div><div class="mc-teams">FCZ vs. Basel</div><div class="mc-stats"><div class="mc-stat">Pässe <span>38</span></div><div class="mc-stat">Eroberungen <span>9</span></div><div class="mc-stat">68 Min.</div></div><div class="rating"><div class="r-circle lo">6.5</div></div></div>
+      <div class="mc win"><div class="mc-top"><span class="mc-res win">WIN</span><span class="mc-comp">Swiss Cup</span><span class="mc-date">15.02.26</span></div><div class="mc-score" data-edit="mc-score-4" contenteditable="false">3–0</div><div class="mc-teams">FCZ vs. Luzern</div><div class="mc-stats"><div class="mc-stat">Pässe <span>61</span></div><div class="mc-stat">Eroberungen <span>11</span></div><div class="mc-stat">90 Min.</div></div><div class="rating"><div class="r-circle hi">8.4</div></div></div>
+      <div class="mc win"><div class="mc-top"><span class="mc-res win">WIN</span><span class="mc-comp">Super League</span><span class="mc-date">08.02.26</span></div><div class="mc-score" data-edit="mc-score-5" contenteditable="false">2–0</div><div class="mc-teams">Servette vs. FCZ</div><div class="mc-stats"><div class="mc-stat">Pässe <span>47</span></div><div class="mc-stat">Eroberungen <span>10</span></div><div class="mc-stat">90 Min.</div></div><div class="rating"><div class="r-circle hi">7.8</div></div></div>
+      <div class="mc draw"><div class="mc-top"><span class="mc-res draw">DRAW</span><span class="mc-comp">Super League</span><span class="mc-date">01.02.26</span></div><div class="mc-score" data-edit="mc-score-6" contenteditable="false">0–0</div><div class="mc-teams">FCZ vs. GC Zürich</div><div class="mc-stats"><div class="mc-stat">Pässe <span>56</span></div><div class="mc-stat">Eroberungen <span>13</span></div><div class="mc-stat">90 Min.</div></div><div class="rating"><div class="r-circle mi">7.0</div></div></div>
     </div>
   </div>
 </section>
@@ -1424,7 +1611,7 @@ footer{background:var(--d);border-top:1px solid var(--br);padding:64px 0 44px}
         <th class="nc2">Assists</th><th class="nc2">Min.</th><th class="nc2">Ø Rating</th>
       </tr></thead>
       <tbody>
-        <tr class="hl"><td class="sc">25/26</td><td class="tc">FC Zürich</td><td>Super League</td><td class="nc2">14</td><td class="nc2">0</td><td class="nc2">1</td><td class="nc2">961'</td><td class="nc2">7.6</td></tr>
+        <tr class="hl"><td class="sc">25/26</td><td class="tc">FC Zürich</td><td>Super League</td><td class="nc2" data-edit="tbl-spiele" contenteditable="false">14</td><td class="nc2" data-edit="tbl-tore" contenteditable="false">0</td><td class="nc2" data-edit="tbl-assists" contenteditable="false">1</td><td class="nc2" data-edit="tbl-minuten" contenteditable="false">961'</td><td class="nc2" data-edit="tbl-rating" contenteditable="false">7.6</td></tr>
         <tr><td class="sc">24/25</td><td class="tc">FC Zürich</td><td>Super League</td><td class="nc2">12</td><td class="nc2">0</td><td class="nc2">0</td><td class="nc2">576'</td><td class="nc2">6.9</td></tr>
         <tr><td class="sc">23/24</td><td class="tc">FC Zürich</td><td>Super League</td><td class="nc2">8</td><td class="nc2">0</td><td class="nc2">1</td><td class="nc2">284'</td><td class="nc2">7.1</td></tr>
         <tr><td class="sc">23/24</td><td class="tc">FC Zürich</td><td>Swiss Cup</td><td class="nc2">3</td><td class="nc2">0</td><td class="nc2">0</td><td class="nc2">162'</td><td class="nc2">7.3</td></tr>
@@ -1612,6 +1799,573 @@ function showToast(msg) {
   clearTimeout(t._timer);
   t._timer = setTimeout(() => t.classList.remove('show'), 3200);
 }
+</script>
+<!-- ══ ADMIN LOCK TRIGGER ══ -->
+<div id="admin-trigger" onclick="admOpenLogin()" title="Admin Login">
+  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+</div>
+
+<!-- ══ ADMIN BAR ══ -->
+<div id="admin-bar">
+  <span class="adm-dot"></span>
+  <span class="adm-who">Angemeldet als <strong id="adm-current-user">—</strong></span>
+  <span class="adm-role staff" id="adm-current-role">—</span>
+  <span class="unsaved-dot" id="unsaved-dot"></span>
+  <div class="adm-sep"></div>
+  <button class="adm-btn save" onclick="adminSave()">
+    <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/></svg>
+    Speichern
+  </button>
+  <button class="adm-btn accounts" id="adm-accounts-btn" onclick="admOpenAccounts()" style="display:none">
+    <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+    Accounts
+  </button>
+  <button class="adm-btn logout" onclick="adminLogout()">
+    <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+    Abmelden
+  </button>
+</div>
+
+<!-- ══ LOGIN MODAL ══ -->
+<div class="adm-overlay" id="adm-login-modal" onclick="admBgClose('adm-login-modal')">
+  <div class="adm-box">
+    <div class="adm-box-top" style="background:linear-gradient(90deg,var(--b),var(--bll),transparent)"></div>
+    <div style="padding:36px 32px 28px">
+      <div class="adm-login-icon" style="background:linear-gradient(135deg,var(--b),var(--bl));box-shadow:0 4px 20px rgba(26,111,255,.35)">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+      </div>
+      <div class="adm-login-title">Admin Login</div>
+      <div class="adm-login-sub">Reichmuth Karriereprofil · Geschützter Bereich</div>
+      <div class="adm-error-msg" id="login-err"></div>
+      <label class="adm-field-label">Benutzername</label>
+      <input class="adm-input" id="login-user" type="text" placeholder="username" autocomplete="username"
+        onkeydown="if(event.key==='Enter')document.getElementById('login-pw').focus()"/>
+      <label class="adm-field-label">Passwort</label>
+      <input class="adm-input" id="login-pw" type="password" placeholder="••••••••" autocomplete="current-password"
+        onkeydown="if(event.key==='Enter')doLogin()"/>
+      <button class="adm-submit-btn" style="background:linear-gradient(135deg,var(--b),var(--bl));color:#fff;box-shadow:0 4px 20px rgba(26,111,255,.3)" onclick="doLogin()">Anmelden</button>
+      <button class="adm-cancel-btn" onclick="admClose('adm-login-modal')">Abbrechen</button>
+    </div>
+  </div>
+</div>
+
+<!-- ══ ACCOUNT MANAGER MODAL ══ -->
+<div class="adm-overlay" id="adm-accounts-modal" onclick="admBgClose('adm-accounts-modal')">
+  <div class="adm-box" style="max-width:660px">
+    <div class="adm-box-top" style="background:linear-gradient(90deg,var(--gold-d),var(--gold),transparent)"></div>
+    <div class="adm-panel-header">
+      <div>
+        <div class="adm-panel-title">Account-Verwaltung</div>
+        <div class="adm-panel-sub">Master-Bereich · Nur für Administratoren</div>
+      </div>
+      <button class="adm-panel-close" onclick="admClose('adm-accounts-modal')">✕</button>
+    </div>
+    <div class="adm-accounts-list" id="adm-accounts-list">
+      <!-- rendered by JS -->
+    </div>
+    <div class="adm-new-acc">
+      <div class="adm-new-acc-title">Neuen Account erstellen</div>
+      <div class="adm-form-error" id="create-err"></div>
+      <div class="adm-new-acc-grid">
+        <div>
+          <label class="adm-field-label">Benutzername</label>
+          <input class="adm-input" id="new-user" type="text" placeholder="z.B. berater01"/>
+        </div>
+        <div>
+          <label class="adm-field-label">Passwort</label>
+          <input class="adm-input" id="new-pw" type="password" placeholder="min. 8 Zeichen"/>
+        </div>
+      </div>
+      <label class="adm-field-label" style="margin-bottom:8px">Rolle</label>
+      <div class="adm-new-role-row">
+        <button class="adm-role-btn selected staff" id="role-staff" onclick="selectRole('staff')">
+          🔵 Mitarbeiter — Kann editieren
+        </button>
+        <button class="adm-role-btn master-r" id="role-master" onclick="selectRole('master')">
+          ⭐ Master — Volle Berechtigung
+        </button>
+      </div>
+      <button class="adm-create-btn" onclick="createAccount()">Account erstellen</button>
+    </div>
+  </div>
+</div>
+
+<!-- ══ CHANGE PASSWORD MODAL ══ -->
+<div class="adm-overlay" id="adm-pw-modal" onclick="admBgClose('adm-pw-modal')">
+  <div class="adm-box" style="max-width:400px">
+    <div class="adm-box-top" style="background:linear-gradient(90deg,var(--gold-d),var(--gold),transparent)"></div>
+    <div style="padding:36px 32px 28px">
+      <div class="adm-login-icon" style="background:linear-gradient(135deg,var(--gold-d),var(--gold));box-shadow:0 4px 20px rgba(240,192,64,.3)">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+      </div>
+      <div class="adm-login-title">Passwort ändern</div>
+      <div class="adm-login-sub" id="pw-modal-sub">Eigenes Passwort aktualisieren</div>
+      <div class="adm-error-msg" id="pw-err"></div>
+      <div id="pw-current-wrap">
+        <label class="adm-field-label">Aktuelles Passwort</label>
+        <input class="adm-input" id="pw-current" type="password" placeholder="Aktuelles Passwort"/>
+      </div>
+      <label class="adm-field-label">Neues Passwort</label>
+      <input class="adm-input" id="pw-new" type="password" placeholder="Min. 8 Zeichen"/>
+      <label class="adm-field-label">Bestätigen</label>
+      <input class="adm-input" id="pw-confirm" type="password" placeholder="Wiederholen"/>
+      <button class="adm-submit-btn" style="background:linear-gradient(135deg,var(--gold-d),var(--gold));color:var(--dark)" onclick="doChangePw()">Passwort speichern</button>
+      <button class="adm-cancel-btn" onclick="admClose('adm-pw-modal')">Abbrechen</button>
+    </div>
+  </div>
+</div>
+
+<!-- ══ TEMP PASSWORD RESULT MODAL ══ -->
+<div class="adm-overlay" id="adm-tempresult-modal" onclick="admBgClose('adm-tempresult-modal')">
+  <div class="adm-box" style="max-width:420px">
+    <div class="adm-box-top" style="background:linear-gradient(90deg,var(--or),var(--gold),transparent)"></div>
+    <div style="padding:36px 32px 28px">
+      <div class="adm-login-icon" style="background:linear-gradient(135deg,#c05010,var(--or));box-shadow:0 4px 20px rgba(255,140,48,.3)">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M21 2l-2 2m-7.61 7.61a5.5 5.5 0 1 1-7.778 7.778 5.5 5.5 0 0 1 7.777-7.777zm0 0L15.5 7.5m0 0l3 3L22 7l-3-3m-3.5 3.5L19 4"/></svg>
+      </div>
+      <div class="adm-login-title">Passwort zurückgesetzt</div>
+      <div class="adm-login-sub">Einmaliges Temp-Passwort für <strong id="tempresult-user" style="color:var(--w)">—</strong></div>
+      <div style="margin:20px 0;padding:16px;background:rgba(255,140,48,.07);border:1px solid rgba(255,140,48,.25);border-radius:8px;text-align:center">
+        <div style="font-family:var(--mono);font-size:9px;letter-spacing:.22em;color:var(--or);text-transform:uppercase;margin-bottom:8px">Einmaliges Passwort</div>
+        <div id="tempresult-pw" style="font-family:var(--mono);font-size:20px;letter-spacing:.12em;color:var(--w);word-break:break-all"></div>
+      </div>
+      <div style="font-family:var(--mono);font-size:8px;letter-spacing:.14em;color:var(--w3);text-align:center;line-height:1.6;margin-bottom:20px">
+        ⚠ Dieses Passwort nur einmal verwendbar.<br>Der Mitarbeiter wird beim Login aufgefordert, ein neues zu setzen.
+      </div>
+      <button class="adm-submit-btn" style="background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);color:var(--w);font-family:var(--sans);font-size:15px;font-weight:600" onclick="copyTempPw()">
+        📋 Passwort kopieren
+      </button>
+      <button class="adm-cancel-btn" onclick="admClose('adm-tempresult-modal')">Schliessen</button>
+    </div>
+  </div>
+</div>
+
+<!-- ══ FORCED CHANGE MODAL (after temp pw login) ══ -->
+<div class="adm-overlay" id="adm-forced-modal">
+  <div class="adm-box" style="max-width:420px">
+    <div class="adm-box-top" style="background:linear-gradient(90deg,var(--b),var(--bll),transparent)"></div>
+    <div style="padding:36px 32px 28px">
+      <div class="adm-login-icon" style="background:linear-gradient(135deg,var(--b),var(--bl));box-shadow:0 4px 20px rgba(26,111,255,.35)">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      </div>
+      <div class="adm-login-title">Neues Passwort</div>
+      <div class="adm-login-sub">Sicherheit: Bitte lege sofort ein persönliches Passwort fest</div>
+      <div style="margin:14px 0 18px;padding:10px 14px;background:rgba(255,140,48,.08);border:1px solid rgba(255,140,48,.2);border-radius:6px;font-family:var(--mono);font-size:8.5px;letter-spacing:.12em;color:var(--or);text-transform:uppercase">
+        ⚠ Du hast dich mit einem einmaligen Passwort angemeldet
+      </div>
+      <div class="adm-error-msg" id="forced-err"></div>
+      <label class="adm-field-label">Neues Passwort</label>
+      <input class="adm-input" id="forced-new" type="password" placeholder="Min. 8 Zeichen"
+        onkeydown="if(event.key==='Enter')document.getElementById('forced-confirm').focus()"/>
+      <label class="adm-field-label">Bestätigen</label>
+      <input class="adm-input" id="forced-confirm" type="password" placeholder="Wiederholen"
+        onkeydown="if(event.key==='Enter')doForcedChange()"/>
+      <button class="adm-submit-btn" style="background:linear-gradient(135deg,var(--b),var(--bl));color:#fff;box-shadow:0 4px 20px rgba(26,111,255,.3)" onclick="doForcedChange()">Passwort speichern & weiter</button>
+    </div>
+  </div>
+</div>
+
+<script>
+/* ══════════════════════════════════════
+   ADMIN — MULTI-USER SYSTEM
+   Roles: master | staff
+   Storage: localStorage (hashed)
+   Session: sessionStorage
+══════════════════════════════════════ */
+
+const ACCOUNTS_KEY  = 'rp_accounts';
+const SESSION_KEY   = 'rp_session';
+const DATA_KEY      = 'rp_data';
+
+let currentUser  = null; // { username, role }
+let newAccRole   = 'staff';
+let unsaved      = false;
+
+// ── SHA-256 ──
+async function h(str) {
+  const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(str));
+  return Array.from(new Uint8Array(buf)).map(b => b.toString(16).padStart(2,'0')).join('');
+}
+
+// ── INIT ──
+async function initAdmin() {
+  // Create default master if no accounts exist
+  let accounts = getAccounts();
+  if (!accounts.length) {
+    accounts = [{ username: 'admin', hash: await h('TestTest123'), role: 'master' }];
+    saveAccounts(accounts);
+  }
+  loadSavedData();
+  // Restore session
+  const s = sessionStorage.getItem(SESSION_KEY);
+  if (s) {
+    const acc = accounts.find(a => a.username === s);
+    if (acc) enterAdminMode(acc);
+  }
+}
+
+function getAccounts() {
+  try { return JSON.parse(localStorage.getItem(ACCOUNTS_KEY)) || []; }
+  catch { return []; }
+}
+function saveAccounts(accounts) {
+  localStorage.setItem(ACCOUNTS_KEY, JSON.stringify(accounts));
+}
+
+// ── MODAL HELPERS ──
+function admOpenLogin() {
+  document.getElementById('adm-login-modal').classList.add('open');
+  setTimeout(() => document.getElementById('login-user').focus(), 150);
+}
+function admClose(id) {
+  document.getElementById(id).classList.remove('open');
+  // Clear inputs
+  const inputs = document.querySelectorAll(`#${id} .adm-input`);
+  inputs.forEach(i => { i.value = ''; i.classList.remove('err'); });
+  const err = document.querySelector(`#${id} .adm-error-msg`);
+  if (err) err.textContent = '';
+}
+function admBgClose(id) { if (event.target.id === id) admClose(id); }
+
+// ── LOGIN ──
+async function doLogin() {
+  const user  = document.getElementById('login-user').value.trim();
+  const pw    = document.getElementById('login-pw').value;
+  const errEl = document.getElementById('login-err');
+
+  if (!user || !pw) {
+    errEl.textContent = 'Bitte alle Felder ausfüllen';
+    return;
+  }
+
+  const accounts = getAccounts();
+  const pwHash   = await h(pw);
+  const acc = accounts.find(a => a.username.toLowerCase() === user.toLowerCase() && a.hash === pwHash);
+
+  if (acc) {
+    sessionStorage.setItem(SESSION_KEY, acc.username);
+    admClose('adm-login-modal');
+    enterAdminMode(acc);
+    // If temp password, force change immediately
+    if (acc.mustChange) {
+      setTimeout(() => openForcedChange(), 300);
+    } else {
+      showToast(`✅ Willkommen, ${acc.username}!`);
+    }
+  } else {
+    errEl.textContent = 'Benutzername oder Passwort falsch';
+    ['login-user','login-pw'].forEach(id => {
+      const el = document.getElementById(id);
+      el.classList.add('err');
+      setTimeout(() => el.classList.remove('err'), 600);
+    });
+    document.getElementById('login-pw').value = '';
+  }
+}
+
+// ── ENTER ADMIN MODE ──
+function enterAdminMode(acc) {
+  currentUser = acc;
+
+  // Update bar
+  document.getElementById('adm-current-user').textContent = acc.username;
+  const roleEl = document.getElementById('adm-current-role');
+  roleEl.textContent = acc.role === 'master' ? '★ Master' : '● Mitarbeiter';
+  roleEl.className   = `adm-role ${acc.role === 'master' ? 'master' : 'staff'}`;
+
+  // Show accounts btn only for master
+  document.getElementById('adm-accounts-btn').style.display =
+    acc.role === 'master' ? 'flex' : 'none';
+
+  document.getElementById('admin-bar').classList.add('visible');
+  document.getElementById('admin-trigger').style.display = 'none';
+  document.body.classList.add('admin-mode');
+
+  // Enable editing
+  document.querySelectorAll('[data-edit]').forEach(el => {
+    el.contentEditable = 'true';
+    el.addEventListener('input', () => {
+      unsaved = true;
+      document.getElementById('unsaved-dot').classList.add('on');
+    });
+  });
+}
+
+// ── LOGOUT ──
+function adminLogout() {
+  if (unsaved && !confirm('Ungespeicherte Änderungen gehen verloren. Wirklich abmelden?')) return;
+  sessionStorage.removeItem(SESSION_KEY);
+  currentUser = null; unsaved = false;
+  document.body.classList.remove('admin-mode');
+  document.getElementById('admin-bar').classList.remove('visible');
+  document.getElementById('admin-trigger').style.display = 'flex';
+  document.getElementById('unsaved-dot').classList.remove('on');
+  document.querySelectorAll('[data-edit]').forEach(el => { el.contentEditable = 'false'; });
+  showToast('👋 Abgemeldet');
+}
+
+// ── SAVE ──
+function adminSave() {
+  const data = {};
+  document.querySelectorAll('[data-edit]').forEach(el => {
+    data[el.dataset.edit] = el.textContent.trim();
+  });
+  localStorage.setItem(DATA_KEY, JSON.stringify(data));
+  syncRelatedFields(data);
+  unsaved = false;
+  document.getElementById('unsaved-dot').classList.remove('on');
+  showToast('✅ Gespeichert!');
+}
+
+function loadSavedData() {
+  const raw = localStorage.getItem(DATA_KEY);
+  if (!raw) return;
+  const data = JSON.parse(raw);
+  document.querySelectorAll('[data-edit]').forEach(el => {
+    const key = el.dataset.edit;
+    if (data[key] !== undefined) {
+      el.textContent = data[key];
+      if (el.classList.contains('counter')) {
+        const n = parseInt(data[key].replace(/[^\d]/g,''));
+        if (!isNaN(n)) el.dataset.t = n;
+      }
+    }
+  });
+  syncRelatedFields(data);
+}
+
+function syncRelatedFields(data) {
+  const map = { 'stat-einsaetze':'card-spiele','stat-minuten':'card-min','stat-assists':'card-assist' };
+  Object.entries(map).forEach(([src,dst]) => {
+    if (data[src]) {
+      const el = document.querySelector(`[data-edit="${dst}"]`);
+      if (el) el.textContent = data[src];
+    }
+  });
+  document.querySelectorAll('[data-edit^="attr-"]').forEach(el => {
+    const val = parseInt(el.textContent);
+    if (!isNaN(val)) {
+      const bar = el.closest('.ar')?.querySelector('.af');
+      if (bar) { bar.dataset.w = val; if (bar.style.width !== '0%') bar.style.width = val + '%'; }
+    }
+  });
+}
+
+// ── ACCOUNT MANAGER ──
+function admOpenAccounts() {
+  renderAccountsList();
+  document.getElementById('adm-accounts-modal').classList.add('open');
+}
+
+function renderAccountsList() {
+  const accounts = getAccounts();
+  const list = document.getElementById('adm-accounts-list');
+  list.innerHTML = accounts.map(acc => {
+    const isSelf = acc.username === currentUser?.username;
+    const initials = acc.username.slice(0,2).toUpperCase();
+    const avatarBg = acc.role === 'master'
+      ? 'background:linear-gradient(135deg,#b88a18,#f0c040)'
+      : 'background:linear-gradient(135deg,#0038A8,#1a6fff)';
+    const tempBadge = acc.mustChange
+      ? `<span style="font-family:var(--mono);font-size:7.5px;letter-spacing:.1em;padding:2px 7px;border-radius:8px;background:rgba(255,140,48,.15);color:var(--or);border:1px solid rgba(255,140,48,.3);margin-right:6px">⚠ Temp-PW</span>`
+      : '';
+    const actions = isSelf
+      ? `<button class="adm-acc-del" style="border-color:rgba(91,155,255,.25);color:var(--bll)" onclick="admOpenChangePw('${acc.username}',false)">🔑 PW</button>`
+      : `
+        <button class="adm-acc-del" style="border-color:rgba(240,192,64,.25);color:var(--gold);margin-right:4px" onclick="masterResetPw('${acc.username}')" title="Einmaliges Passwort generieren">🔑 Reset</button>
+        <button class="adm-acc-del" onclick="deleteAccount('${acc.username}')">Löschen</button>`;
+    return `
+      <div class="adm-account-row">
+        <div class="adm-acc-avatar" style="${avatarBg}">${initials}</div>
+        <div class="adm-acc-info">
+          <div class="adm-acc-name">${acc.username}${isSelf ? ' <span style="font-size:11px;color:var(--bll)">(Du)</span>' : ''}</div>
+          <div class="adm-acc-meta">${acc.role === 'master' ? 'Master · Volle Berechtigung' : 'Mitarbeiter · Nur editieren'}</div>
+        </div>
+        ${tempBadge}
+        <span class="adm-acc-role ${acc.role === 'master' ? 'master' : 'staff'}">${acc.role === 'master' ? '★ Master' : '● Mitarbeiter'}</span>
+        <div style="display:flex;gap:4px;flex-shrink:0">${actions}</div>
+      </div>`;
+  }).join('');
+}
+
+function selectRole(role) {
+  newAccRole = role;
+  document.getElementById('role-staff').className  = `adm-role-btn ${role === 'staff' ? 'selected staff' : ''}`;
+  document.getElementById('role-master').className = `adm-role-btn ${role === 'master' ? 'selected master-r' : 'master-r'}`;
+}
+
+async function createAccount() {
+  const username = document.getElementById('new-user').value.trim();
+  const pw       = document.getElementById('new-pw').value;
+  const errEl    = document.getElementById('create-err');
+
+  if (!username || !pw) { errEl.textContent = 'Alle Felder ausfüllen'; return; }
+  if (pw.length < 8)    { errEl.textContent = 'Passwort min. 8 Zeichen'; return; }
+
+  const accounts = getAccounts();
+  if (accounts.find(a => a.username.toLowerCase() === username.toLowerCase())) {
+    errEl.textContent = 'Benutzername bereits vergeben'; return;
+  }
+
+  accounts.push({ username, hash: await h(pw), role: newAccRole });
+  saveAccounts(accounts);
+  document.getElementById('new-user').value = '';
+  document.getElementById('new-pw').value = '';
+  errEl.textContent = '';
+  renderAccountsList();
+  showToast(`✅ Account "${username}" erstellt`);
+}
+
+function deleteAccount(username) {
+  if (!confirm(`Account "${username}" wirklich löschen?`)) return;
+  const accounts = getAccounts().filter(a => a.username !== username);
+  saveAccounts(accounts);
+  renderAccountsList();
+  showToast(`🗑 "${username}" gelöscht`);
+}
+
+// ── CHANGE PASSWORD (own) ──
+function admOpenChangePw(username, isMasterReset = false) {
+  const modal = document.getElementById('adm-pw-modal');
+  modal._targetUser     = username || currentUser?.username;
+  modal._isMasterReset  = isMasterReset;
+
+  const curField = document.getElementById('pw-current-wrap');
+  if (isMasterReset) {
+    curField.style.display = 'none'; // Master doesn't need to enter current pw
+    document.getElementById('pw-modal-sub').textContent = `Neues Passwort für "${username}" setzen`;
+  } else {
+    curField.style.display = 'block';
+    document.getElementById('pw-modal-sub').textContent =
+      username === currentUser?.username
+        ? 'Eigenes Passwort aktualisieren'
+        : `Passwort für "${username}" ändern`;
+  }
+  modal.classList.add('open');
+  setTimeout(() => {
+    const first = isMasterReset
+      ? document.getElementById('pw-new')
+      : document.getElementById('pw-current');
+    first.focus();
+  }, 150);
+}
+
+async function doChangePw() {
+  const cur     = document.getElementById('pw-current').value;
+  const nw      = document.getElementById('pw-new').value;
+  const conf    = document.getElementById('pw-confirm').value;
+  const errEl   = document.getElementById('pw-err');
+  const modal   = document.getElementById('adm-pw-modal');
+  const target  = modal._targetUser;
+  const isMasterReset = modal._isMasterReset;
+
+  if (nw.length < 8)  { errEl.textContent = 'Min. 8 Zeichen'; return; }
+  if (nw !== conf)    { errEl.textContent = 'Passwörter stimmen nicht überein'; return; }
+
+  const accounts = getAccounts();
+  const acc = accounts.find(a => a.username === target);
+  if (!acc) { errEl.textContent = 'Account nicht gefunden'; return; }
+
+  // If not master-reset, verify current password
+  if (!isMasterReset) {
+    const curHash = await h(cur);
+    if (curHash !== acc.hash) {
+      errEl.textContent = 'Aktuelles Passwort falsch';
+      document.getElementById('pw-current').classList.add('err');
+      setTimeout(() => document.getElementById('pw-current').classList.remove('err'), 600);
+      return;
+    }
+  }
+
+  acc.hash = await h(nw);
+  acc.mustChange = false; // Clear forced-change flag
+  saveAccounts(accounts);
+  admClose('adm-pw-modal');
+  renderAccountsList();
+  showToast('🔒 Passwort gespeichert!');
+}
+
+// ── MASTER RESET (generates one-time password) ──
+function masterResetPw(username) {
+  const tempPw = genTempPw();
+  (async () => {
+    const accounts = getAccounts();
+    const acc = accounts.find(a => a.username === username);
+    if (!acc) return;
+    acc.hash       = await h(tempPw);
+    acc.mustChange = true; // Force new password on next login
+    saveAccounts(accounts);
+    renderAccountsList();
+    // Show the temp password to master
+    showTempPwResult(username, tempPw);
+  })();
+}
+
+function genTempPw() {
+  const chars = 'ABCDEFGHJKMNPQRSTUVWXYZabcdefghjkmnpqrstuvwxyz23456789!@#$';
+  let pw = '';
+  const arr = new Uint8Array(12);
+  crypto.getRandomValues(arr);
+  arr.forEach(b => pw += chars[b % chars.length]);
+  return pw;
+}
+
+function showTempPwResult(username, tempPw) {
+  const overlay = document.getElementById('adm-tempresult-modal');
+  document.getElementById('tempresult-user').textContent = username;
+  document.getElementById('tempresult-pw').textContent = tempPw;
+  overlay.classList.add('open');
+}
+
+// ── FORCED CHANGE (after login with temp pw) ──
+function openForcedChange() {
+  document.getElementById('adm-forced-modal').classList.add('open');
+  setTimeout(() => document.getElementById('forced-new').focus(), 150);
+}
+
+async function doForcedChange() {
+  const nw   = document.getElementById('forced-new').value;
+  const conf = document.getElementById('forced-confirm').value;
+  const err  = document.getElementById('forced-err');
+
+  if (nw.length < 8) { err.textContent = 'Min. 8 Zeichen'; return; }
+  if (nw !== conf)   { err.textContent = 'Passwörter stimmen nicht überein'; return; }
+
+  const accounts = getAccounts();
+  const acc = accounts.find(a => a.username === currentUser.username);
+  if (!acc) return;
+  acc.hash       = await h(nw);
+  acc.mustChange = false;
+  saveAccounts(accounts);
+
+  document.getElementById('adm-forced-modal').classList.remove('open');
+  showToast('✅ Passwort gesetzt! Du bist jetzt angemeldet.');
+}
+
+function copyTempPw() {
+  const pw = document.getElementById('tempresult-pw').textContent;
+  navigator.clipboard.writeText(pw).then(() => showToast('📋 Passwort kopiert!'));
+}
+
+// ── KEYBOARD ──
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') {
+    ['adm-login-modal','adm-accounts-modal','adm-pw-modal','adm-tempresult-modal'].forEach(id => admClose(id));
+    // forced modal cannot be escaped
+  }
+  if (e.key === 'Enter' && document.getElementById('adm-login-modal').classList.contains('open')) {
+    doLogin();
+  }
+  if (e.key === 'Enter' && document.getElementById('adm-pw-modal').classList.contains('open')) {
+    doChangePw();
+  }
+  if (e.key === 'Enter' && document.getElementById('adm-forced-modal')?.classList.contains('open')) {
+    doForcedChange();
+  }
+});
+
+// Boot
+initAdmin();
 </script>
 </body>
 </html>
