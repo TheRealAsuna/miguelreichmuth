@@ -1,0 +1,1431 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Miguel Reichmuth – Offizielles Karriereprofil. FC Zürich Mittelfeldspieler, #38.">
+<meta property="og:title" content="Miguel Reichmuth – FC Zürich #38">
+<meta property="og:description" content="Vollständiges Karriereprofil: Stats, Heatmap, Match Log, Instagram & mehr.">
+<meta property="og:image" content="Miguel.webp">
+<title>Miguel Reichmuth — FC Zürich #38</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600&family=DM+Serif+Display:ital@0;1&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<style>
+/* ════════════ ROOT ════════════ */
+:root{
+  --b:#0038A8;--bl:#1a6fff;--bll:#5b9bff;
+  --gold:#f0c040;--gd:#b88a18;
+  --gr:#2dff8f;--grd:#00b860;
+  --rd:#ff4455;--or:#ff8c30;
+  --ig1:#f09433;--ig2:#e6683c;--ig3:#dc2743;--ig4:#cc2366;--ig5:#bc1888;
+  --w:#eef2ff;--w2:rgba(238,242,255,.55);--w3:rgba(238,242,255,.25);--w4:rgba(238,242,255,.1);
+  --d:#030408;--d2:#06091a;--d3:#0c1028;--d4:#111830;
+  --br:rgba(0,56,168,.22);--br2:rgba(238,242,255,.07);
+  --r:14px;--rs:6px;--nh:60px;
+  --serif:'DM Serif Display',serif;
+  --sans:'DM Sans',sans-serif;
+  --mono:'JetBrains Mono',monospace;
+  --display:'Bebas Neue',sans-serif;
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:24px}
+body{background:var(--d);color:var(--w);font-family:var(--sans);overflow-x:hidden;line-height:1.5}
+body::before{content:'';position:fixed;inset:0;background:url("data:image/svg+xml,%3Csvg viewBox='0 0 600 600' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.028'/%3E%3C/svg%3E");pointer-events:none;z-index:9000;mix-blend-mode:overlay}
+img{display:block;max-width:100%}
+button,a{font-family:inherit;cursor:pointer}
+a{color:inherit;text-decoration:none}
+.container{max-width:1260px;margin:0 auto;padding:0 56px}
+section{padding:96px 0;position:relative}
+
+/* ════════════ SCROLL PROGRESS ════════════ */
+#prog{position:fixed;top:0;left:0;height:3px;background:linear-gradient(90deg,var(--b),var(--bl),var(--gold));z-index:1001;width:0%;transition:width .1s linear;border-radius:0 2px 2px 0}
+
+/* ════════════ NAV ════════════ */
+#nav{position:fixed;top:3px;left:0;right:0;z-index:200;height:var(--nh);background:rgba(3,4,8,.85);backdrop-filter:blur(24px);border-bottom:1px solid var(--br);transition:box-shadow .3s}
+#nav.scrolled{box-shadow:0 4px 40px rgba(0,0,0,.7)}
+.nav-in{display:flex;align-items:center;gap:0;height:100%;max-width:1260px;margin:0 auto;padding:0 56px}
+.nav-logo{font-family:var(--display);font-size:20px;letter-spacing:.12em;color:var(--bl);white-space:nowrap;margin-right:28px;text-shadow:0 0 18px rgba(26,111,255,.5);flex-shrink:0}
+.nav-links{display:flex;gap:1px;flex:1;overflow:hidden}
+.nl{font-family:var(--mono);font-size:9px;letter-spacing:.18em;color:var(--w3);text-transform:uppercase;padding:7px 12px;border-radius:3px;transition:all .2s;white-space:nowrap}
+.nl:hover{color:var(--w);background:var(--br2)}
+.nl.on{color:var(--bll);background:rgba(26,111,255,.1)}
+.nav-right{display:flex;align-items:center;gap:8px;margin-left:auto;flex-shrink:0}
+.nav-pill{display:flex;align-items:center;gap:6px;padding:6px 14px;border-radius:20px;font-family:var(--mono);font-size:9px;letter-spacing:.16em;text-transform:uppercase;border:1px solid var(--br2);color:var(--w3);background:transparent;transition:all .2s}
+.nav-pill:hover{color:var(--w);border-color:rgba(255,255,255,.18);background:var(--br2)}
+.nav-pill.ig{border-color:rgba(188,24,136,.35);color:#e06090}
+.nav-pill.ig:hover{background:rgba(188,24,136,.1);border-color:#bc1888}
+.hamburger{display:none;flex-direction:column;gap:5px;padding:8px;background:none;border:none}
+.hamburger span{display:block;width:22px;height:1.5px;background:var(--w3);transition:all .3s;border-radius:2px}
+.mobile-menu{display:none;position:fixed;inset:0;top:var(--nh);background:rgba(3,4,8,.97);z-index:199;padding:32px 28px;flex-direction:column;gap:4px;backdrop-filter:blur(20px)}
+.mobile-menu.open{display:flex}
+.mm-link{font-family:var(--display);font-size:32px;letter-spacing:.06em;color:var(--w3);padding:10px 0;border-bottom:1px solid var(--br2);transition:color .2s}
+.mm-link:hover{color:var(--bl)}
+
+/* ════════════ HERO ════════════ */
+#hero{min-height:100vh;display:grid;grid-template-columns:1fr 1fr;padding-top:0;overflow:hidden;position:relative}
+.hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse 60% 80% at 72% 52%,rgba(0,56,168,.28) 0%,transparent 62%),radial-gradient(ellipse 30% 40% at 10% 85%,rgba(26,111,255,.1) 0%,transparent 55%),linear-gradient(160deg,#030408 0%,#060e24 50%,#030408 100%)}
+.hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(0,56,168,.055) 1px,transparent 1px),linear-gradient(90deg,rgba(0,56,168,.055) 1px,transparent 1px);background-size:60px 60px;animation:gm 24s linear infinite}
+@keyframes gm{0%{background-position:0 0}100%{background-position:60px 60px}}
+.hero-glyph{position:absolute;right:-0.04em;bottom:-0.06em;font-family:var(--display);font-size:clamp(280px,40vw,560px);color:transparent;-webkit-text-stroke:1.5px rgba(0,56,168,.16);line-height:1;pointer-events:none;user-select:none;z-index:1}
+
+.hero-l{position:relative;z-index:3;display:flex;flex-direction:column;justify-content:center;padding:80px 60px}
+.hero-tag{font-family:var(--mono);font-size:10px;letter-spacing:.3em;color:var(--bll);text-transform:uppercase;display:flex;align-items:center;gap:14px;margin-bottom:20px;opacity:0;animation:up .7s .1s forwards}
+.hero-tag i{width:30px;height:1px;background:var(--bll);display:block}
+.hero-name{font-family:var(--display);font-size:clamp(52px,8.5vw,118px);line-height:.87;letter-spacing:.025em;color:var(--w);opacity:0;animation:up .7s .3s forwards}
+.hero-name em{font-style:normal;color:var(--bl);display:block;text-shadow:0 0 70px rgba(26,111,255,.5)}
+.hero-pos{margin-top:20px;font-family:var(--mono);font-size:11px;letter-spacing:.22em;color:var(--w3);text-transform:uppercase;opacity:0;animation:up .7s .5s forwards}
+.hero-hr{width:50px;height:2px;background:linear-gradient(90deg,var(--bl),transparent);margin:26px 0;opacity:0;animation:up .7s .6s forwards}
+
+/* quick info pills */
+.hero-pills{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:28px;opacity:0;animation:up .7s .7s forwards}
+.hpill{display:flex;align-items:center;gap:6px;padding:5px 12px;border:1px solid var(--br2);border-radius:20px;font-family:var(--mono);font-size:9px;letter-spacing:.14em;color:var(--w3);text-transform:uppercase}
+.hpill .dot{width:6px;height:6px;border-radius:50%;background:var(--bll)}
+.hpill.gold-p .dot{background:var(--gold)}
+.hpill.green-p .dot{background:var(--gr)}
+
+.bio-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px 28px;opacity:0;animation:up .7s .85s forwards}
+.br label{font-family:var(--mono);font-size:8px;letter-spacing:.22em;color:var(--w3);text-transform:uppercase;display:block;margin-bottom:3px}
+.br span{font-size:15px;font-weight:600;color:var(--w)}
+.br .gold{color:var(--gold)}
+
+/* LIVE indicator */
+.live-badge{display:inline-flex;align-items:center;gap:8px;margin-top:22px;padding:7px 16px;border:1px solid rgba(45,255,143,.25);border-radius:20px;font-family:var(--mono);font-size:9px;letter-spacing:.18em;color:var(--gr);text-transform:uppercase;background:rgba(45,255,143,.05);opacity:0;animation:up .7s 1s forwards;align-self:flex-start}
+.live-dot{width:7px;height:7px;border-radius:50%;background:var(--gr);animation:pulse-g 1.5s infinite}
+@keyframes pulse-g{0%,100%{box-shadow:0 0 0 0 rgba(45,255,143,.5)}70%{box-shadow:0 0 0 8px rgba(45,255,143,0)}}
+
+/* HERO CARD */
+.hero-r{position:relative;z-index:3;display:flex;align-items:center;justify-content:center;padding:60px 40px}
+.pcard{position:relative;width:372px;height:556px;opacity:0;animation:cin 1.3s .4s forwards}
+@keyframes cin{0%{opacity:0;transform:perspective(1000px) rotateY(-20deg) translateY(30px)}100%{opacity:1;transform:perspective(1000px) rotateY(-3deg) translateY(0)}}
+.pcard:hover{opacity:1;transition:transform .4s ease;transform:perspective(1000px) rotateY(2deg) rotateX(-1.5deg)}
+.cb{position:absolute;inset:0;border-radius:22px;background:linear-gradient(148deg,#0c1538 0%,#060c1e 55%,#0e1a42 100%);border:1px solid rgba(0,56,168,.5);overflow:hidden;box-shadow:0 0 0 1px rgba(26,111,255,.1),0 36px 90px rgba(0,0,0,.85),0 0 150px rgba(0,56,168,.2),inset 0 1px 0 rgba(91,155,255,.15)}
+.c-shim{position:absolute;inset:0;border-radius:22px;background:linear-gradient(115deg,transparent 20%,rgba(91,155,255,.04) 45%,rgba(91,155,255,.1) 50%,rgba(91,155,255,.04) 55%,transparent 80%);background-size:200% 200%;animation:shim 4s ease-in-out infinite;pointer-events:none;z-index:4}
+@keyframes shim{0%,100%{background-position:200% 0}50%{background-position:-200% 0}}
+.c-scan{position:absolute;left:0;right:0;height:1.5px;top:0;background:linear-gradient(90deg,transparent,rgba(91,155,255,.5) 30%,rgba(91,155,255,.9) 50%,rgba(91,155,255,.5) 70%,transparent);animation:scan 5s ease-in-out infinite;box-shadow:0 0 10px rgba(91,155,255,.5);z-index:7;border-radius:22px}
+@keyframes scan{0%{top:0;opacity:0}8%{opacity:1}92%{opacity:1}100%{top:100%;opacity:0}}
+.c-photo{position:absolute;top:82px;left:0;right:0;bottom:0;overflow:hidden}
+.c-photo img{width:100%;height:100%;object-fit:cover;object-position:top center;mask-image:linear-gradient(to bottom,black 35%,transparent 100%);-webkit-mask-image:linear-gradient(to bottom,black 35%,transparent 100%);filter:contrast(1.07) saturate(.86)}
+.c-head{position:absolute;top:0;left:0;right:0;padding:20px 22px;background:linear-gradient(180deg,rgba(3,4,8,.97) 0%,transparent 100%);display:flex;align-items:center;justify-content:space-between;z-index:5}
+.c-club{font-family:var(--display);font-size:26px;letter-spacing:.12em;color:var(--bl);text-shadow:0 0 22px rgba(26,111,255,.7)}
+.c-lg{font-family:var(--mono);font-size:7.5px;letter-spacing:.25em;color:var(--w3);text-transform:uppercase;margin-top:3px}
+.c-num{font-family:var(--display);font-size:64px;line-height:1;color:transparent;-webkit-text-stroke:1.5px rgba(91,155,255,.6);text-shadow:0 0 30px rgba(91,155,255,.25)}
+.c-foot{position:absolute;bottom:0;left:0;right:0;padding:0 22px 22px;background:linear-gradient(0deg,rgba(3,4,8,1) 55%,transparent 100%);z-index:5}
+.c-nm{font-family:var(--display);font-size:38px;letter-spacing:.06em;color:var(--w);line-height:1}
+.c-sub{font-family:var(--mono);font-size:8.5px;letter-spacing:.18em;color:var(--w3);text-transform:uppercase;margin-top:6px}
+.c-stats{display:flex;margin-top:14px;border-top:1px solid rgba(0,56,168,.3);padding-top:14px}
+.cs{flex:1;text-align:center;border-right:1px solid rgba(0,56,168,.2)}
+.cs:last-child{border:none}
+.cs-v{font-family:var(--display);font-size:26px;color:var(--w);display:block;line-height:1}
+.cs-l{font-family:var(--mono);font-size:7px;letter-spacing:.18em;color:var(--w3);text-transform:uppercase;margin-top:3px;display:block}
+.cc{position:absolute;width:18px;height:18px;border-color:rgba(91,155,255,.5);border-style:solid;z-index:6}
+.cc.tl{top:12px;left:12px;border-width:1.5px 0 0 1.5px;border-radius:3px 0 0 0}
+.cc.tr{top:12px;right:12px;border-width:1.5px 1.5px 0 0;border-radius:0 3px 0 0}
+.cc.bl{bottom:12px;left:12px;border-width:0 0 1.5px 1.5px;border-radius:0 0 0 3px}
+.cc.br{bottom:12px;right:12px;border-width:0 1.5px 1.5px 0;border-radius:0 0 3px 0}
+.c-glow{position:absolute;inset:-40px;border-radius:46px;background:radial-gradient(ellipse at 50% 100%,rgba(0,56,168,.4) 0%,transparent 68%);z-index:-1;pointer-events:none}
+
+/* ════════════ TICKER ════════════ */
+.ticker{height:40px;background:var(--b);overflow:hidden;display:flex;align-items:center;border-top:1px solid rgba(255,255,255,.1)}
+.tk-label{font-family:var(--display);font-size:13px;letter-spacing:.18em;padding:0 22px;white-space:nowrap;background:rgba(0,0,0,.3);height:100%;display:flex;align-items:center;flex-shrink:0;border-right:1px solid rgba(255,255,255,.15)}
+.tk-scroll{overflow:hidden;flex:1}
+.tk-inner{display:flex;animation:tick 32s linear infinite;width:max-content}
+.tki{font-family:var(--mono);font-size:10px;letter-spacing:.14em;white-space:nowrap;padding:0 30px;color:rgba(255,255,255,.8);display:flex;align-items:center;gap:10px}
+.tki::before{content:'◆';font-size:6px;opacity:.5}
+@keyframes tick{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+
+/* ════════════ SECTION HEADER ════════════ */
+.sec-ey{font-family:var(--mono);font-size:9.5px;letter-spacing:.3em;color:var(--bll);text-transform:uppercase;display:flex;align-items:center;gap:14px;margin-bottom:12px}
+.sec-ey i{width:30px;height:1px;background:var(--bll);display:block;flex-shrink:0}
+.sec-ttl{font-family:var(--display);font-size:clamp(44px,5.5vw,78px);line-height:.92;letter-spacing:.03em;margin-bottom:52px}
+.sec-sub{font-family:var(--sans);font-size:14px;color:var(--w2);line-height:1.6;max-width:520px;margin-top:10px;margin-bottom:44px;font-weight:400}
+
+.alt{background:var(--d2)}
+.bdr{border-top:1px solid var(--br)}
+
+/* ════════════ STATS ════════════ */
+.stats-g{display:grid;grid-template-columns:repeat(5,1fr);gap:1px;background:var(--br);border:1px solid var(--br)}
+.sb{background:var(--d2);padding:38px 30px;position:relative;overflow:hidden;transition:background .25s;cursor:default}
+.sb:hover{background:rgba(0,56,168,.13)}
+.sb::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--bl),transparent);transform:scaleX(0);transform-origin:left;transition:transform .4s}
+.sb:hover::after{transform:scaleX(1)}
+.sb-ic{font-size:18px;margin-bottom:8px;opacity:.45}
+.sb-n{font-family:var(--display);font-size:62px;line-height:1;color:var(--w)}
+.sb-l{font-family:var(--mono);font-size:8.5px;letter-spacing:.22em;color:var(--w3);text-transform:uppercase;margin-top:5px}
+.sb-c{font-family:var(--mono);font-size:7.5px;letter-spacing:.14em;color:var(--bll);margin-top:3px;opacity:.55}
+
+/* ════════════ SOCIAL HUB ════════════ */
+#social{padding:96px 0;background:var(--d)}
+.social-layout{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:start}
+
+/* Instagram profile card */
+.ig-profile{background:var(--d3);border:1px solid var(--br);border-radius:var(--r);overflow:hidden;position:relative}
+.ig-profile::before{content:'';display:block;height:3px;background:linear-gradient(90deg,var(--ig1),var(--ig2),var(--ig3),var(--ig4),var(--ig5))}
+.ig-head{padding:28px 28px 20px;display:flex;align-items:center;gap:20px}
+.ig-avatar-wrap{position:relative;flex-shrink:0}
+.ig-avatar-ring{width:88px;height:88px;border-radius:50%;padding:3px;background:linear-gradient(135deg,var(--ig1),var(--ig2),var(--ig3),var(--ig4),var(--ig5));flex-shrink:0}
+.ig-avatar-inner{width:100%;height:100%;border-radius:50%;overflow:hidden;border:3px solid var(--d3);background:var(--d2)}
+.ig-avatar-inner img{width:100%;height:100%;object-fit:cover;object-position:top center}
+.ig-name-block{flex:1}
+.ig-handle{font-family:var(--mono);font-size:13px;letter-spacing:.06em;color:var(--w);font-weight:500;margin-bottom:4px}
+.ig-fullname{font-family:var(--sans);font-size:12px;color:var(--w3);margin-bottom:10px}
+.ig-follow-btn{display:inline-flex;align-items:center;gap:8px;padding:8px 20px;border-radius:8px;background:linear-gradient(135deg,var(--ig3),var(--ig4),var(--ig5));border:none;color:#fff;font-family:var(--sans);font-size:13px;font-weight:600;transition:all .25s;box-shadow:0 4px 20px rgba(188,24,136,.3)}
+.ig-follow-btn:hover{transform:translateY(-1px);box-shadow:0 8px 28px rgba(188,24,136,.45)}
+
+/* IG stories highlights */
+.ig-stories{padding:0 28px 20px;display:flex;gap:16px;overflow-x:auto;scrollbar-width:none}
+.ig-stories::-webkit-scrollbar{display:none}
+.story-item{display:flex;flex-direction:column;align-items:center;gap:7px;flex-shrink:0;cursor:pointer}
+.story-ring{width:62px;height:62px;border-radius:50%;padding:2.5px;background:linear-gradient(135deg,var(--ig1),var(--ig2),var(--ig3),var(--ig4),var(--ig5));transition:transform .2s}
+.story-ring:hover{transform:scale(1.08)}
+.story-inner{width:100%;height:100%;border-radius:50%;background:var(--d2);display:flex;align-items:center;justify-content:center;font-size:22px;border:2.5px solid var(--d3)}
+.story-label{font-family:var(--mono);font-size:8px;letter-spacing:.1em;color:var(--w3);text-transform:uppercase;text-align:center}
+
+/* IG post grid */
+.ig-posts{display:grid;grid-template-columns:repeat(3,1fr);gap:3px;padding:0 0 28px}
+.ig-post{aspect-ratio:1;position:relative;overflow:hidden;cursor:pointer}
+.ig-post-bg{width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:28px;position:relative;transition:filter .25s}
+.ig-post:hover .ig-post-bg{filter:brightness(.7)}
+.ig-post-overlay{position:absolute;inset:0;background:rgba(3,4,8,.6);opacity:0;transition:opacity .25s;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px}
+.ig-post:hover .ig-post-overlay{opacity:1}
+.ig-post-stat{font-family:var(--mono);font-size:9px;letter-spacing:.1em;color:#fff;text-transform:uppercase}
+
+.ig-actions{padding:0 28px 28px;display:flex;gap:10px;flex-wrap:wrap}
+.ig-btn{display:flex;align-items:center;gap:8px;padding:10px 18px;border-radius:8px;font-family:var(--mono);font-size:9px;letter-spacing:.15em;text-transform:uppercase;border:1px solid;transition:all .25s;cursor:pointer;background:transparent}
+.ig-btn.primary{border-color:rgba(188,24,136,.4);color:#e06090;background:rgba(188,24,136,.07)}
+.ig-btn.primary:hover{background:rgba(188,24,136,.14);border-color:#bc1888}
+.ig-btn.secondary{border-color:var(--br2);color:var(--w3)}
+.ig-btn.secondary:hover{background:var(--br2);color:var(--w)}
+.ig-btn.wa{border-color:rgba(37,211,102,.3);color:#25d366}
+.ig-btn.wa:hover{background:rgba(37,211,102,.08)}
+.ig-btn.tw{border-color:rgba(29,155,240,.3);color:#1d9bf0}
+.ig-btn.tw:hover{background:rgba(29,155,240,.08)}
+
+/* Social right column */
+.social-right{display:flex;flex-direction:column;gap:20px}
+.qr-card{background:var(--d3);border:1px solid var(--br);border-radius:var(--r);padding:32px;display:flex;gap:24px;align-items:flex-start;position:relative;overflow:hidden}
+.qr-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--b),var(--bl),transparent)}
+#qrcode{background:#fff;padding:8px;border-radius:6px;flex-shrink:0}
+#qrcode canvas,#qrcode img{width:80px!important;height:80px!important}
+.qr-info h3{font-family:var(--display);font-size:24px;letter-spacing:.06em;color:var(--w);margin-bottom:6px}
+.qr-info p{font-family:var(--sans);font-size:13px;color:var(--w3);line-height:1.55;margin-bottom:14px;font-weight:400}
+.qr-copy{display:flex;align-items:center;gap:8px;padding:8px 16px;border:1px solid var(--br2);border-radius:6px;font-family:var(--mono);font-size:9px;letter-spacing:.15em;text-transform:uppercase;color:var(--w3);background:transparent;transition:all .2s}
+.qr-copy:hover{border-color:rgba(255,255,255,.25);color:var(--w);background:var(--br2)}
+
+.fan-card{background:var(--d3);border:1px solid var(--br);border-radius:var(--r);padding:28px;position:relative;overflow:hidden}
+.fan-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--gold),var(--gd),transparent)}
+.fan-title{font-family:var(--display);font-size:22px;letter-spacing:.07em;color:var(--gold);margin-bottom:6px}
+.fan-sub{font-family:var(--mono);font-size:8.5px;letter-spacing:.18em;color:var(--w3);text-transform:uppercase;margin-bottom:20px}
+.stars{display:flex;gap:6px;margin-bottom:16px}
+.star{font-size:28px;cursor:pointer;transition:transform .15s;filter:grayscale(.8) brightness(.5);line-height:1}
+.star:hover,.star.on{filter:none;transform:scale(1.15)}
+.fan-avg{font-family:var(--mono);font-size:10px;letter-spacing:.16em;color:var(--w3);text-transform:uppercase}
+.fan-avg strong{color:var(--gold);font-size:16px}
+.fan-bar-wrap{margin-top:14px;display:flex;flex-direction:column;gap:6px}
+.fan-bar-row{display:flex;align-items:center;gap:10px}
+.fan-bar-row label{font-family:var(--mono);font-size:8px;letter-spacing:.1em;color:var(--w3);width:16px;text-align:right}
+.fan-bar-track{flex:1;height:5px;background:rgba(255,255,255,.06);border-radius:3px;overflow:hidden}
+.fan-bar-fill{height:100%;background:linear-gradient(90deg,var(--gd),var(--gold));border-radius:3px;transition:width .6s cubic-bezier(.16,1,.3,1)}
+.fan-bar-count{font-family:var(--mono);font-size:8px;color:var(--w3);width:24px}
+
+.social-links-card{background:var(--d3);border:1px solid var(--br);border-radius:var(--r);padding:24px;display:flex;gap:10px;flex-wrap:wrap}
+.soc-btn{flex:1;min-width:120px;display:flex;align-items:center;justify-content:center;gap:8px;padding:12px 16px;border-radius:8px;font-family:var(--mono);font-size:9px;letter-spacing:.14em;text-transform:uppercase;border:1px solid;transition:all .25s;cursor:pointer;background:transparent}
+.soc-btn svg{width:15px;height:15px;flex-shrink:0}
+
+/* ════════════ GALLERY ════════════ */
+#gallery{padding:96px 0;background:var(--d2)}
+.gallery-g{display:grid;grid-template-columns:repeat(4,1fr);grid-template-rows:auto;gap:12px;margin-top:8px}
+.gallery-g .gi:first-child{grid-column:span 2;grid-row:span 2}
+.gi{position:relative;overflow:hidden;border-radius:8px;cursor:pointer;background:var(--d3)}
+.gi-inner{width:100%;height:100%;min-height:180px;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;transition:transform .4s}
+.gi-inner.tall{min-height:380px}
+.gi:hover .gi-inner{transform:scale(1.04)}
+.gi-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(3,4,8,.85) 0%,transparent 60%);opacity:0;transition:opacity .3s}
+.gi:hover .gi-overlay{opacity:1}
+.gi-label{position:absolute;bottom:14px;left:14px;right:14px;opacity:0;transition:opacity .3s,transform .3s;transform:translateY(8px)}
+.gi:hover .gi-label{opacity:1;transform:translateY(0)}
+.gi-lbl-main{font-family:var(--display);font-size:16px;letter-spacing:.06em;color:var(--w)}
+.gi-lbl-sub{font-family:var(--mono);font-size:8px;letter-spacing:.15em;color:var(--w3);text-transform:uppercase;margin-top:3px}
+.gi-badge{position:absolute;top:12px;left:12px;font-family:var(--mono);font-size:7.5px;letter-spacing:.12em;color:var(--bll);background:rgba(0,56,168,.3);border:1px solid rgba(26,111,255,.25);padding:3px 8px;border-radius:3px;text-transform:uppercase}
+
+/* lightbox */
+#lightbox{position:fixed;inset:0;background:rgba(3,4,8,.96);z-index:800;display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .3s;backdrop-filter:blur(16px)}
+#lightbox.open{opacity:1;pointer-events:all}
+.lb-inner{position:relative;max-width:780px;width:90%;text-align:center}
+.lb-close{position:absolute;top:-40px;right:0;background:none;border:none;color:var(--w3);font-size:26px;line-height:1;transition:color .2s}
+.lb-close:hover{color:var(--w)}
+.lb-img{width:100%;border-radius:10px;max-height:70vh;object-fit:contain;background:var(--d3)}
+.lb-caption{font-family:var(--mono);font-size:10px;letter-spacing:.18em;color:var(--w3);text-transform:uppercase;margin-top:16px}
+
+/* ════════════ DNA ════════════ */
+#dna{background:var(--d)}
+.dna-layout{display:grid;grid-template-columns:1fr 1fr;gap:40px}
+.chart-card{background:var(--d3);border:1px solid var(--br);border-radius:var(--r);padding:34px;position:relative;overflow:hidden}
+.chart-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--b),var(--bll),transparent)}
+.cc-label{font-family:var(--mono);font-size:9px;letter-spacing:.22em;color:var(--w3);text-transform:uppercase;margin-bottom:16px}
+.attrs-g{display:flex;flex-direction:column}
+.ar{display:flex;align-items:center;gap:14px;padding:13px 0;border-bottom:1px solid var(--br2)}
+.an{font-family:var(--mono);font-size:9px;letter-spacing:.14em;color:var(--w3);text-transform:uppercase;width:122px;flex-shrink:0}
+.ab{flex:1;height:3px;background:rgba(255,255,255,.05);border-radius:2px;overflow:hidden}
+.af{height:100%;border-radius:2px;background:linear-gradient(90deg,var(--b),var(--bll));width:0;transition:width 1.6s cubic-bezier(.16,1,.3,1)}
+.av{font-family:var(--display);font-size:21px;color:var(--w);width:32px;text-align:right;flex-shrink:0}
+
+/* ════════════ POSITION ════════════ */
+#position{background:var(--d2);border-top:1px solid var(--br)}
+.pos-layout{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:start}
+.pitch-card{background:var(--d3);border:1px solid var(--br);border-radius:var(--r);padding:32px;position:relative;overflow:hidden}
+.pitch-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--grd),var(--gr),transparent)}
+.pitch-svg{width:100%;max-width:300px;margin:0 auto;display:block}
+.pitch-tag{font-family:var(--mono);font-size:9px;letter-spacing:.18em;color:var(--w3);text-transform:uppercase;text-align:center;margin-top:14px}
+.pos-rows{display:flex;flex-direction:column;gap:0}
+.pos-row{display:flex;align-items:center;gap:14px;padding:16px 0;border-bottom:1px solid var(--br2)}
+.pos-ic{width:38px;height:38px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:17px;flex-shrink:0}
+.pos-ic.bl{background:rgba(0,56,168,.2);border:1px solid rgba(26,111,255,.2)}
+.pos-ic.gr{background:rgba(45,255,143,.1);border:1px solid rgba(45,255,143,.2)}
+.pos-ic.gd{background:rgba(240,192,64,.1);border:1px solid rgba(240,192,64,.2)}
+.pos-body{flex:1}
+.pos-nm{font-size:14px;font-weight:600;color:var(--w)}
+.pos-sb{font-family:var(--mono);font-size:8px;letter-spacing:.12em;color:var(--w3);text-transform:uppercase;margin-top:2px}
+.pos-val{font-family:var(--display);font-size:28px;color:var(--w);flex-shrink:0}
+
+/* ════════════ HIGHLIGHTS / VIDEO ════════════ */
+#videos{background:var(--d)}
+.vid-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.vid-card{background:var(--d3);border:1px solid var(--br);border-radius:var(--r);overflow:hidden;cursor:pointer;transition:border-color .25s,transform .2s;position:relative}
+.vid-card:hover{border-color:rgba(26,111,255,.35);transform:translateY(-3px)}
+.vid-thumb{position:relative;aspect-ratio:16/9;overflow:hidden;display:flex;align-items:center;justify-content:center;font-size:40px}
+.vid-play{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(3,4,8,.4);transition:background .25s}
+.vid-card:hover .vid-play{background:rgba(3,4,8,.2)}
+.vid-play-btn{width:52px;height:52px;border-radius:50%;background:rgba(26,111,255,.85);display:flex;align-items:center;justify-content:center;box-shadow:0 0 30px rgba(26,111,255,.5);transition:transform .2s}
+.vid-card:hover .vid-play-btn{transform:scale(1.1)}
+.vid-play-btn svg{margin-left:3px}
+.vid-info{padding:18px}
+.vid-date{font-family:var(--mono);font-size:8px;letter-spacing:.15em;color:var(--bll);text-transform:uppercase;margin-bottom:8px}
+.vid-title{font-family:var(--display);font-size:18px;letter-spacing:.04em;color:var(--w);margin-bottom:6px}
+.vid-comp{font-size:13px;color:var(--w3);font-weight:400}
+.vid-tags{display:flex;gap:6px;margin-top:12px;flex-wrap:wrap}
+.vid-tag{padding:2px 8px;border:1px solid var(--br2);border-radius:3px;font-family:var(--mono);font-size:7.5px;letter-spacing:.12em;color:var(--w3);text-transform:uppercase}
+
+/* ════════════ PHYSICAL ════════════ */
+#physical{background:var(--d2);border-top:1px solid var(--br)}
+.phys-layout{display:grid;grid-template-columns:1fr 2fr;gap:40px;align-items:center}
+.phys-silhouette{display:flex;flex-direction:column;align-items:center;gap:20px}
+.silhouette-wrap{position:relative;width:160px}
+.silhouette-wrap svg{width:100%}
+.phys-num{font-family:var(--display);font-size:72px;line-height:1;color:var(--w);text-align:center;letter-spacing:.02em}
+.phys-unit{font-family:var(--mono);font-size:11px;letter-spacing:.2em;color:var(--w3);text-transform:uppercase;text-align:center}
+.phys-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.phys-box{background:var(--d3);border:1px solid var(--br);border-radius:var(--rs);padding:22px 18px;text-align:center;position:relative;overflow:hidden;transition:border-color .25s}
+.phys-box:hover{border-color:rgba(26,111,255,.3)}
+.phys-box-val{font-family:var(--display);font-size:42px;line-height:1;color:var(--w);display:block}
+.phys-box-label{font-family:var(--mono);font-size:8.5px;letter-spacing:.2em;color:var(--w3);text-transform:uppercase;margin-top:6px;display:block}
+.phys-box-bar{position:absolute;bottom:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--b),var(--bll),transparent)}
+
+/* compare bar */
+.compare-wrap{margin-top:28px;display:flex;flex-direction:column;gap:14px}
+.cmp-row{display:flex;align-items:center;gap:14px}
+.cmp-label{font-family:var(--mono);font-size:9px;letter-spacing:.14em;color:var(--w3);text-transform:uppercase;width:100px;flex-shrink:0}
+.cmp-track{flex:1;height:8px;background:rgba(255,255,255,.05);border-radius:4px;overflow:hidden;position:relative}
+.cmp-me{height:100%;background:linear-gradient(90deg,var(--b),var(--bll));border-radius:4px;transition:width 1.5s cubic-bezier(.16,1,.3,1);width:0}
+.cmp-avg-line{position:absolute;top:0;bottom:0;width:2px;background:rgba(255,255,255,.2);border-radius:2px}
+.cmp-val{font-family:var(--display);font-size:20px;color:var(--w);width:38px;text-align:right;flex-shrink:0}
+.cmp-note{font-family:var(--mono);font-size:7.5px;letter-spacing:.12em;color:var(--bll);width:36px;flex-shrink:0}
+
+/* ════════════ MATCH LOG ════════════ */
+#matchlog{background:var(--d)}
+.form-row{display:flex;align-items:center;gap:8px;margin-bottom:28px}
+.form-label{font-family:var(--mono);font-size:9px;letter-spacing:.2em;color:var(--w3);text-transform:uppercase}
+.fdot{width:30px;height:30px;border-radius:5px;display:flex;align-items:center;justify-content:center;font-family:var(--display);font-size:14px}
+.fdot.w{background:rgba(45,255,143,.18);color:var(--gr)}
+.fdot.d{background:rgba(240,192,64,.18);color:var(--gold)}
+.fdot.l{background:rgba(255,68,85,.18);color:var(--rd)}
+.match-g{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.mc{background:var(--d3);border:1px solid var(--br);border-radius:var(--rs);padding:22px;position:relative;overflow:hidden;transition:border-color .25s,transform .2s}
+.mc:hover{border-color:rgba(26,111,255,.3);transform:translateY(-2px)}
+.mc::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;border-radius:3px 0 0 3px}
+.mc.win::before{background:var(--gr)}
+.mc.draw::before{background:var(--gold)}
+.mc.loss::before{background:var(--rd)}
+.mc-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}
+.mc-res{font-family:var(--display);font-size:12px;letter-spacing:.12em;padding:3px 8px;border-radius:3px}
+.mc-res.win{background:rgba(45,255,143,.14);color:var(--gr)}
+.mc-res.draw{background:rgba(240,192,64,.14);color:var(--gold)}
+.mc-res.loss{background:rgba(255,68,85,.14);color:var(--rd)}
+.mc-comp{font-family:var(--mono);font-size:8px;letter-spacing:.14em;color:var(--w3);text-transform:uppercase}
+.mc-date{font-family:var(--mono);font-size:8px;letter-spacing:.1em;color:var(--w3)}
+.mc-score{font-family:var(--display);font-size:34px;letter-spacing:.05em;color:var(--w);line-height:1;margin-bottom:4px}
+.mc-teams{font-size:13px;font-weight:500;color:var(--w2);margin-bottom:12px}
+.mc-stats{display:flex;gap:12px;flex-wrap:wrap}
+.mc-stat{font-family:var(--mono);font-size:8px;letter-spacing:.1em;color:var(--w3);text-transform:uppercase;display:flex;align-items:center;gap:5px}
+.mc-stat span{color:var(--w);font-size:11px}
+.rating{position:absolute;top:22px;right:22px}
+.r-circle{width:38px;height:38px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:var(--display);font-size:17px;border:2px solid}
+.r-circle.hi{border-color:var(--gr);color:var(--gr);background:rgba(45,255,143,.07);box-shadow:0 0 12px rgba(45,255,143,.2)}
+.r-circle.mi{border-color:var(--gold);color:var(--gold);background:rgba(240,192,64,.07)}
+.r-circle.lo{border-color:var(--w3);color:var(--w2);background:rgba(255,255,255,.04)}
+
+/* ════════════ TIMELINE ════════════ */
+#timeline{background:var(--d2);border-top:1px solid var(--br)}
+.tl-wrap{position:relative;max-width:860px;margin:0 auto;padding:0 48px}
+.milestone{display:grid;position:relative;z-index:2}
+.milestone.odd{grid-template-columns:1fr 68px 1fr;text-align:right}
+.milestone.even{grid-template-columns:1fr 68px 1fr}
+.m-content{padding-bottom:52px}
+.odd .m-l{grid-column:1;padding-right:26px}
+.odd .m-r{grid-column:3;display:none}
+.even .m-l{grid-column:1;display:none}
+.even .m-r{grid-column:3;padding-left:26px}
+.m-c{grid-column:2;display:flex;flex-direction:column;align-items:center}
+.m-vl{flex:1;width:2px;min-height:48px;background:linear-gradient(180deg,rgba(26,111,255,.55),rgba(0,56,168,.3))}
+.m-node{flex-shrink:0;margin:6px 0}
+.m-dot{width:26px;height:26px;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:default}
+.m-dot.a{background:var(--d2);border:2px solid var(--bl);box-shadow:0 0 0 4px rgba(26,111,255,.1),0 0 16px rgba(26,111,255,.4)}
+.m-dot.a::after{content:'';width:8px;height:8px;border-radius:50%;background:var(--bl);box-shadow:0 0 8px var(--bl)}
+.m-dot.now{background:var(--d2);border:2px solid var(--w);box-shadow:0 0 0 5px rgba(238,242,255,.07),0 0 24px rgba(238,242,255,.3);animation:pnow 2s infinite}
+.m-dot.now::after{content:'';width:8px;height:8px;border-radius:50%;background:var(--w);animation:pg 2s infinite}
+@keyframes pnow{0%,100%{box-shadow:0 0 0 5px rgba(238,242,255,.07),0 0 20px rgba(238,242,255,.3)}50%{box-shadow:0 0 0 9px rgba(238,242,255,.04),0 0 36px rgba(238,242,255,.4)}}
+@keyframes pg{0%,100%{box-shadow:0 0 8px var(--w)}50%{box-shadow:0 0 20px rgba(238,242,255,.5)}}
+
+.m-card{opacity:0;transform:translateY(14px);transition:opacity .55s,transform .55s}
+.m-card.vis{opacity:1;transform:translateY(0)}
+.m-yr{font-family:var(--display);font-size:44px;line-height:1;letter-spacing:.04em;color:var(--bl);margin-bottom:4px}
+.m-yr.now{color:var(--w);text-shadow:0 0 28px rgba(238,242,255,.35)}
+.m-badge{display:inline-block;padding:2px 10px;border-radius:2px;font-family:var(--mono);font-size:7.5px;letter-spacing:.18em;text-transform:uppercase;margin-bottom:9px;border:1px solid rgba(26,111,255,.28);color:var(--bll);background:rgba(0,56,168,.1)}
+.m-badge.now{border-color:rgba(238,242,255,.22);color:var(--w);background:rgba(238,242,255,.05)}
+.m-title{font-family:var(--display);font-size:20px;letter-spacing:.04em;color:var(--w);margin-bottom:5px;line-height:1.1}
+.m-desc{font-size:13px;font-weight:400;color:rgba(238,242,255,.4);line-height:1.6}
+
+/* ════════════ ACHIEVEMENTS ════════════ */
+#achievements{background:var(--d)}
+.ach-g{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.ach{background:var(--d3);border:1px solid var(--br);border-radius:var(--rs);padding:24px 20px;text-align:center;transition:border-color .25s,transform .2s;position:relative;overflow:hidden}
+.ach:hover{border-color:rgba(240,192,64,.3);transform:translateY(-2px)}
+.ach-ic{font-size:34px;margin-bottom:12px;display:block}
+.ach-ttl{font-family:var(--display);font-size:18px;letter-spacing:.05em;color:var(--w);margin-bottom:5px}
+.ach-dsc{font-size:12px;color:var(--w2);font-weight:400;line-height:1.4}
+.ach-yr{font-family:var(--mono);font-size:8px;letter-spacing:.18em;color:var(--gold);text-transform:uppercase;margin-top:10px;display:block}
+
+/* ════════════ STRENGTHS ════════════ */
+#strengths{background:var(--d2);border-top:1px solid var(--br)}
+.strengths-layout{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:start}
+.strengths-list{display:flex;flex-direction:column;gap:16px}
+.str-item{display:flex;align-items:flex-start;gap:16px;padding:20px;background:var(--d3);border:1px solid var(--br);border-radius:var(--rs);transition:border-color .25s}
+.str-item:hover{border-color:rgba(45,255,143,.2)}
+.str-ic{width:42px;height:42px;border-radius:10px;background:rgba(45,255,143,.1);border:1px solid rgba(45,255,143,.2);display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0}
+.str-body h4{font-family:var(--display);font-size:18px;letter-spacing:.04em;color:var(--w);margin-bottom:4px}
+.str-body p{font-size:13px;color:var(--w2);line-height:1.5;font-weight:400}
+
+/* quote */
+.quote-block{background:var(--d3);border:1px solid var(--br);border-radius:var(--r);padding:36px;position:relative;overflow:hidden}
+.quote-block::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--b),var(--bll),transparent)}
+.q-mark{font-family:var(--display);font-size:100px;line-height:.5;color:rgba(0,56,168,.2);display:block;margin-bottom:14px}
+.q-text{font-family:var(--serif);font-size:clamp(18px,2vw,24px);line-height:1.45;color:var(--w);margin-bottom:22px;font-style:italic}
+.q-src{font-family:var(--mono);font-size:9px;letter-spacing:.22em;color:var(--bll);text-transform:uppercase}
+
+/* ════════════ PRESS ════════════ */
+#press{background:var(--d)}
+.news-g{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.nc{background:var(--d3);border:1px solid var(--br);border-radius:var(--rs);padding:24px;transition:border-color .25s,transform .2s;cursor:pointer;display:flex;flex-direction:column}
+.nc:hover{border-color:rgba(26,111,255,.35);transform:translateY(-3px)}
+.nc-src{font-family:var(--mono);font-size:8.5px;letter-spacing:.18em;color:var(--bll);text-transform:uppercase;margin-bottom:10px;display:flex;align-items:center;justify-content:space-between}
+.nc-date{color:var(--w3)}
+.nc-ttl{font-family:var(--display);font-size:20px;letter-spacing:.04em;color:var(--w);line-height:1.15;margin-bottom:10px;flex:1}
+.nc-exc{font-size:13px;color:var(--w2);line-height:1.5;font-weight:400}
+.nc-tag{display:inline-block;margin-top:14px;padding:2px 10px;border:1px solid var(--br);border-radius:2px;font-family:var(--mono);font-size:7.5px;letter-spacing:.15em;color:var(--w3);text-transform:uppercase}
+
+/* ════════════ TABLE ════════════ */
+#season{background:var(--d2);border-top:1px solid var(--br)}
+.tbl{width:100%;border-collapse:collapse}
+.tbl th{font-family:var(--mono);font-size:8.5px;letter-spacing:.22em;color:var(--w3);text-transform:uppercase;padding:14px 20px;text-align:left;border-bottom:1px solid rgba(0,56,168,.22)}
+.tbl td{padding:16px 20px;font-size:14px;border-bottom:1px solid var(--br2)}
+.tbl tbody tr{transition:background .2s}
+.tbl tbody tr:hover{background:rgba(0,56,168,.08)}
+.sc{font-family:var(--display);font-size:22px;color:var(--bll);letter-spacing:.04em}
+.tc{font-weight:600;color:var(--w)}
+.nc2{font-family:var(--mono);color:var(--w2);text-align:right}
+th.nc2{text-align:right}
+.hl td{color:var(--w)!important}
+.hl .nc2{color:var(--gold)!important}
+.hl{background:rgba(0,56,168,.1)!important}
+
+/* ════════════ FOOTER ════════════ */
+footer{background:var(--d);border-top:1px solid var(--br);padding:64px 0 44px}
+.ft-g{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:40px;margin-bottom:48px}
+.ft-brand .ft-nm{font-family:var(--display);font-size:clamp(32px,4vw,54px);letter-spacing:.1em;color:transparent;-webkit-text-stroke:1px rgba(238,242,255,.1)}
+.ft-brand p{font-family:var(--mono);font-size:8.5px;letter-spacing:.25em;color:var(--w3);text-transform:uppercase;margin-top:8px}
+.ft-col h4{font-family:var(--mono);font-size:9px;letter-spacing:.25em;color:var(--bll);text-transform:uppercase;margin-bottom:16px}
+.ft-lnk{font-size:14px;color:var(--w3);display:block;margin-bottom:10px;transition:color .2s;cursor:pointer;font-weight:400}
+.ft-lnk:hover{color:var(--bll)}
+.ft-bot{border-top:1px solid var(--br2);padding-top:26px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px}
+.ft-copy{font-family:var(--mono);font-size:8.5px;letter-spacing:.16em;color:var(--w3);text-transform:uppercase}
+
+/* ════════════ TOAST ════════════ */
+.toast{position:fixed;bottom:28px;right:28px;background:var(--d3);border:1px solid var(--gr);border-radius:8px;padding:12px 20px;font-family:var(--mono);font-size:9.5px;letter-spacing:.16em;color:var(--gr);text-transform:uppercase;z-index:600;transform:translateY(14px);opacity:0;transition:all .3s;pointer-events:none}
+.toast.show{transform:translateY(0);opacity:1}
+
+/* ════════════ UTILS ════════════ */
+.reveal{opacity:0;transform:translateY(26px);transition:opacity .65s,transform .65s}
+.reveal.vis{opacity:1;transform:translateY(0)}
+@keyframes up{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:translateY(0)}}
+
+/* ════════════ PRINT ════════════ */
+@media print{
+  #nav,.ticker,.toast,footer,.nav-right{display:none!important}
+  body{background:#fff!important;color:#000!important}
+  section{padding:20px 0!important;break-inside:avoid}
+  .hero-bg,.hero-grid{display:none}
+}
+
+/* ════════════ RESPONSIVE ════════════ */
+@media(max-width:1100px){
+  .container{padding:0 36px}
+  .nav-in{padding:0 36px}
+  .ig-wrap{grid-template-columns:290px 1fr;gap:24px}
+}
+@media(max-width:900px){
+  .container{padding:0 24px}
+  .nav-in{padding:0 24px}
+  #hero{grid-template-columns:1fr;min-height:auto;padding-bottom:56px}
+  .hero-r{display:none}
+  .hero-l{padding:88px 24px 48px}
+  .hero-glyph{font-size:clamp(160px,45vw,300px)}
+  .stats-g{grid-template-columns:repeat(3,1fr)}
+  .ig-wrap{grid-template-columns:1fr;gap:20px}
+  .ig-identity{display:grid;grid-template-columns:auto 1fr;gap:20px;align-items:start}
+  .ig-av-ring{margin-bottom:0;width:76px;height:76px}
+  .dna-layout,.pos-layout,.phys-layout,.strengths-layout,.two-col{grid-template-columns:1fr;gap:20px}
+  .match-g,.vid-grid,.news-g{grid-template-columns:repeat(2,1fr);gap:12px}
+  .ach-g{grid-template-columns:repeat(2,1fr);gap:12px}
+  .phys-grid{grid-template-columns:repeat(3,1fr)}
+  .ft-g{grid-template-columns:repeat(2,1fr);gap:24px}
+  .nav-links{display:none}
+  .hamburger{display:flex}
+  .tl-wrap{padding:0 8px}
+  section{padding:64px 0}
+  .sec-ttl{margin-bottom:32px}
+  .hero-name{font-size:clamp(52px,12vw,88px)}
+}
+@media(max-width:600px){
+  .container{padding:0 16px}
+  .nav-in{padding:0 16px}
+  #hero{padding-top:56px}
+  .hero-l{padding:60px 16px 40px}
+  .hero-name{font-size:clamp(46px,13vw,78px)}
+  .hero-pills{gap:5px}
+  .hpill{font-size:8px;padding:4px 9px}
+  .bio-grid{gap:10px 16px}
+  .stats-g{grid-template-columns:repeat(2,1fr)}
+  .sb{padding:22px 16px}
+  .sb-n{font-size:50px}
+  .ig-identity{grid-template-columns:1fr;text-align:center}
+  .ig-av-ring{margin:0 auto 14px;width:80px;height:80px}
+  .ig-stats-row{max-width:260px;margin:0 auto 20px}
+  .ig-follow-cta{max-width:280px;margin-left:auto;margin-right:auto}
+  .ig-note{justify-content:center}
+  .ig-cell-main{grid-row:span 1;aspect-ratio:1}
+  .match-g,.vid-grid,.news-g,.ach-g{grid-template-columns:1fr;gap:10px}
+  .phys-grid{grid-template-columns:repeat(2,1fr);gap:10px}
+  .tl-wrap{padding:0}
+  .milestone.odd,.milestone.even{grid-template-columns:1fr 42px 1fr}
+  .m-yr{font-size:30px}
+  .m-title{font-size:15px}
+  .m-desc{font-size:12px}
+  .m-l{padding-right:12px!important}
+  .m-r{padding-left:12px!important}
+  .chart-card{padding:18px 14px}
+  .ft-g{grid-template-columns:1fr;gap:20px}
+  .ext-links{gap:7px}
+  .ext-link{padding:8px 12px;font-size:8.5px}
+  section{padding:50px 0}
+  .sec-ttl{font-size:clamp(34px,10vw,56px);margin-bottom:24px}
+  .strengths-layout{grid-template-columns:1fr}
+  .pos-layout{grid-template-columns:1fr}
+  .compare-wrap{gap:10px}
+}
+@media(max-width:380px){
+  .hero-name{font-size:clamp(38px,13vw,60px)}
+  .stats-g{grid-template-columns:1fr 1fr}
+  .ig-stats-row{max-width:220px}
+  .milestone.odd,.milestone.even{grid-template-columns:1fr 36px 1fr}
+}
+</style>
+</head>
+<body>
+
+<!-- ══ SCROLL PROGRESS ══ -->
+<div id="prog"></div>
+
+<!-- ══════════════════════════════════════
+     NAV
+══════════════════════════════════════ -->
+<!-- ══ NAV CSS OVERRIDE ══ -->
+<style>
+/* ══════════════════════════════════════
+   NAV — FLOATING PILL
+══════════════════════════════════════ */
+#nav{
+  top:16px;
+  height:auto;
+  background:transparent;
+  backdrop-filter:none;
+  border-bottom:none;
+  box-shadow:none;
+  left:50%;
+  right:auto;
+  transform:translateX(-50%);
+  width:auto;
+  max-width:calc(100vw - 32px);
+  z-index:200;
+}
+#nav.scrolled{box-shadow:none}
+
+.nav-in{
+  height:auto;
+  padding:0;
+  gap:0;
+  display:flex;
+  align-items:center;
+  gap:8px;
+}
+
+/* pill container */
+.nav-pill-wrap{
+  display:flex;align-items:center;gap:2px;
+  background:rgba(8,12,28,.82);
+  backdrop-filter:blur(28px) saturate(1.5);
+  border:1px solid rgba(255,255,255,.08);
+  border-radius:40px;
+  padding:5px 6px;
+  box-shadow:0 8px 32px rgba(0,0,0,.5),0 1px 0 rgba(255,255,255,.06) inset;
+}
+
+.nl{
+  font-family:var(--sans);
+  font-size:13px;font-weight:500;
+  letter-spacing:.01em;
+  color:rgba(238,242,255,.45);
+  padding:7px 16px;
+  border-radius:30px;
+  transition:color .2s,background .2s;
+  white-space:nowrap;
+  position:relative;
+}
+.nl::after{display:none}
+.nl:hover{color:rgba(238,242,255,.85);background:rgba(255,255,255,.06)}
+.nl.on{
+  color:var(--w);
+  background:rgba(26,111,255,.22);
+  box-shadow:0 0 0 1px rgba(26,111,255,.25);
+}
+
+/* divider dot between groups */
+.nav-dot{
+  width:3px;height:3px;border-radius:50%;
+  background:rgba(255,255,255,.12);
+  flex-shrink:0;margin:0 4px;
+}
+
+/* logo pill */
+.nav-logo-pill{
+  display:flex;align-items:center;gap:9px;
+  background:rgba(8,12,28,.82);
+  backdrop-filter:blur(28px) saturate(1.5);
+  border:1px solid rgba(255,255,255,.08);
+  border-radius:40px;
+  padding:7px 16px 7px 8px;
+  box-shadow:0 8px 32px rgba(0,0,0,.5),0 1px 0 rgba(255,255,255,.06) inset;
+  flex-shrink:0;
+}
+.nav-badge{
+  width:30px;height:30px;border-radius:50%;
+  background:linear-gradient(140deg,#1a6fff,#0038A8);
+  display:flex;align-items:center;justify-content:center;
+  font-family:var(--display);font-size:13px;color:#fff;
+  flex-shrink:0;
+  box-shadow:0 0 10px rgba(26,111,255,.4);
+}
+.nav-logo-name{
+  font-family:var(--sans);font-size:13px;font-weight:700;
+  letter-spacing:.02em;color:var(--w);white-space:nowrap;
+}
+.nav-logo-sub{display:none}
+
+/* instagram pill */
+.nav-ig-pill{
+  display:flex;align-items:center;gap:8px;
+  background:rgba(8,12,28,.82);
+  backdrop-filter:blur(28px) saturate(1.5);
+  border:1px solid rgba(188,24,136,.3);
+  border-radius:40px;
+  padding:7px 16px 7px 10px;
+  box-shadow:0 8px 32px rgba(0,0,0,.5);
+  color:rgba(240,160,200,.8);
+  font-family:var(--sans);font-size:13px;font-weight:600;
+  cursor:pointer;transition:all .25s;
+  white-space:nowrap;flex-shrink:0;
+  background:rgba(188,24,136,.07);
+}
+.nav-ig-pill:hover{
+  background:rgba(188,24,136,.18);
+  border-color:rgba(188,24,136,.6);
+  color:#fff;
+  box-shadow:0 8px 32px rgba(0,0,0,.5),0 0 20px rgba(188,24,136,.2);
+  transform:translateY(-1px);
+}
+.nav-ig-dot{
+  width:7px;height:7px;border-radius:50%;
+  background:linear-gradient(135deg,var(--ig3),var(--ig5));
+  flex-shrink:0;
+}
+
+/* hide old nav elements */
+.nav-logo,.nav-links,.nav-right,.hamburger{display:none!important}
+.mobile-menu{display:none!important}
+
+/* scroll progress stays */
+#prog{z-index:201}
+
+@media(max-width:700px){
+  #nav{top:12px;max-width:calc(100vw - 24px)}
+  .nav-in{gap:6px}
+  .nl{font-size:12px;padding:7px 12px}
+  .nav-logo-pill{padding:7px 12px 7px 7px}
+  .nav-ig-pill span.ig-label{display:none}
+  .nav-ig-pill{padding:7px 12px 7px 10px}
+}
+@media(max-width:480px){
+  .nav-pill-wrap{display:none}
+  .nav-ig-pill span.ig-label{display:block}
+  #nav{left:16px;right:16px;transform:none;max-width:none}
+  .nav-in{justify-content:space-between}
+}
+
+/* ════════════ INSTAGRAM BANNER ════════════ */
+.ig-banner{background:var(--d2);padding:20px 0}
+.ig-banner-inner{
+  display:flex;align-items:center;justify-content:space-between;
+  gap:20px;flex-wrap:wrap;
+  padding:18px 24px;
+  background:var(--d3);
+  border:1px solid rgba(188,24,136,.2);
+  border-radius:12px;
+  position:relative;overflow:hidden;
+}
+.ig-banner-inner::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:2px;
+  background:linear-gradient(90deg,var(--ig1),var(--ig2),var(--ig3),var(--ig4),var(--ig5));
+}
+.ig-banner-left{display:flex;align-items:center;gap:16px}
+.ig-banner-icon{
+  width:44px;height:44px;border-radius:12px;flex-shrink:0;
+  background:linear-gradient(135deg,var(--ig1),var(--ig2),var(--ig3),var(--ig4),var(--ig5));
+  display:flex;align-items:center;justify-content:center;
+  color:#fff;box-shadow:0 4px 16px rgba(188,24,136,.3);
+}
+.ig-banner-handle{font-family:var(--mono);font-size:15px;letter-spacing:.04em;color:var(--w);font-weight:600}
+.ig-banner-sub{font-family:var(--mono);font-size:9px;letter-spacing:.16em;color:var(--w3);text-transform:uppercase;margin-top:3px}
+.ig-banner-btn{
+  display:flex;align-items:center;gap:9px;
+  padding:11px 24px;border-radius:8px;flex-shrink:0;
+  background:linear-gradient(135deg,var(--ig3),var(--ig4),var(--ig5));
+  color:#fff;font-family:var(--sans);font-size:14px;font-weight:700;
+  text-decoration:none;border:none;transition:all .25s;
+  box-shadow:0 4px 18px rgba(188,24,136,.3);
+}
+.ig-banner-btn:hover{transform:translateY(-1px);box-shadow:0 8px 26px rgba(188,24,136,.5)}
+@media(max-width:500px){
+  .ig-banner-inner{flex-direction:column;align-items:flex-start;gap:16px}
+  .ig-banner-btn{width:100%;justify-content:center}
+}
+
+</style>
+
+<!-- ══ FLOATING NAV ══ -->
+<nav id="nav">
+  <div class="nav-in">
+
+    <!-- Logo -->
+    <div class="nav-logo-pill">
+      <div class="nav-badge">38</div>
+      <div class="nav-logo-name">Reichmuth</div>
+    </div>
+
+    <!-- Links -->
+    <div class="nav-pill-wrap">
+      <a class="nl on" href="#hero">Profil</a>
+      <a class="nl" href="#stats">Stats</a>
+      <span class="nav-dot"></span>
+      <a class="nl" href="#matchlog">Spiele</a>
+      <a class="nl" href="#timeline">Karriere</a>
+      <span class="nav-dot"></span>
+      <a class="nl" href="#press">Presse</a>
+    </div>
+
+    <!-- Instagram -->
+    <button class="nav-ig-pill" onclick="openIG()">
+      <span class="nav-ig-dot"></span>
+      <span class="ig-label">@miguelreichmuth</span>
+    </button>
+
+  </div>
+</nav>
+
+<style>
+/* IG tile hover */
+.ig-post-tile:hover img{transform:scale(1.06)}
+.ig-tile-hover{position:absolute;inset:0;background:rgba(188,24,136,.22);opacity:0;transition:opacity .25s}
+.ig-post-tile:hover .ig-tile-hover{opacity:1}
+</style>
+
+
+
+
+<!-- ══════════════════════════════════════
+     HERO
+══════════════════════════════════════ -->
+<section id="hero" style="padding:0;position:relative">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-glyph">38</div>
+
+  <div class="hero-l">
+    <p class="hero-tag"><i></i>FC Zürich · Karriereprofil 2025/26</p>
+    <h1 class="hero-name">Miguel<em>Reichmuth</em></h1>
+    <p class="hero-pos">Zentrales Mittelfeld · #38 · FC Zürich</p>
+    <div class="hero-hr"></div>
+
+    <div class="hero-pills">
+      <div class="hpill"><span class="dot"></span>Super League</div>
+      <div class="hpill gold-p"><span class="dot"></span>Vertrag bis 2030</div>
+      <div class="hpill green-p"><span class="dot"></span>22 Jahre</div>
+      <div class="hpill"><span class="dot"></span>Schweiz · Chile</div>
+    </div>
+
+    <div class="bio-grid">
+      <div class="br"><label>Geburtsdatum</label><span>26.10.2003</span></div>
+      <div class="br"><label>Geburtsort</label><span>Zug, CH</span></div>
+      <div class="br"><label>Grösse / Gewicht</label><span>1,71 m · 71 kg</span></div>
+      <div class="br"><label>Nationalität</label><span>🇨🇭 &amp; 🇨🇱</span></div>
+      <div class="br"><label>Spielfuss</label><span>Rechts</span></div>
+      <div class="br"><label>Vertrag bis</label><span class="gold">30.06.2030</span></div>
+      <div class="br"><label>Marktwert</label><span>~500 Tsd. €</span></div>
+      <div class="br"><label>Berater</label><span>Gold Kick SA</span></div>
+    </div>
+
+    <div class="live-badge" id="liveClock">
+      <span class="live-dot"></span>
+      <span id="clockText">Zürich · —</span>
+    </div>
+  </div>
+
+  <div class="hero-r">
+    <div class="pcard">
+      <div class="c-glow"></div>
+      <div class="cb">
+        <div class="c-shim"></div><div class="c-scan"></div>
+        <div class="c-head">
+          <div><div class="c-club">FC ZÜRICH</div><div class="c-lg">Super League · Switzerland</div></div>
+          <div class="c-num">38</div>
+        </div>
+        <div class="c-photo">
+          <img src="Miguel.webp" alt="Miguel Reichmuth"/>
+        </div>
+        <div class="c-foot">
+          <div class="c-nm">MIGUEL REICHMUTH</div>
+          <div class="c-sub">Zentrales Mittelfeld · 2003 · Zürich</div>
+          <div class="c-stats">
+            <div class="cs"><span class="cs-v">14</span><span class="cs-l">Spiele</span></div>
+            <div class="cs"><span class="cs-v">961</span><span class="cs-l">Min.</span></div>
+            <div class="cs"><span class="cs-v">1</span><span class="cs-l">Assist</span></div>
+            <div class="cs"><span class="cs-v">2030</span><span class="cs-l">Vertrag</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="cc tl"></div><div class="cc tr"></div><div class="cc bl"></div><div class="cc br"></div>
+    </div>
+  </div>
+</section>
+
+<!-- TICKER -->
+<div class="ticker">
+  <div class="tk-label">NEWS</div>
+  <div class="tk-scroll"><div class="tk-inner" id="tkInner"></div></div>
+</div>
+
+<!-- ══════════════════════════════════════
+     STATS
+══════════════════════════════════════ -->
+<section id="stats" class="alt bdr">
+  <div class="container">
+    <p class="sec-ey reveal"><i></i>Saison 2025/26</p>
+    <h2 class="sec-ttl reveal">Aktuelle<br>Statistiken</h2>
+    <div class="stats-g reveal">
+      <div class="sb"><div class="sb-ic">⚽</div><div class="sb-n"><span class="counter" data-t="14">0</span></div><div class="sb-l">Einsätze</div><div class="sb-c">Super League</div></div>
+      <div class="sb"><div class="sb-ic">⏱</div><div class="sb-n"><span class="counter" data-t="961">0</span></div><div class="sb-l">Minuten gespielt</div><div class="sb-c">Super League</div></div>
+      <div class="sb"><div class="sb-ic">🎯</div><div class="sb-n"><span class="counter" data-t="1">0</span></div><div class="sb-l">Assists</div><div class="sb-c">Super League</div></div>
+      <div class="sb"><div class="sb-ic">💪</div><div class="sb-n"><span class="counter" data-t="16">0</span></div><div class="sb-l">Balleroberungen</div><div class="sb-c">Rekord vs. Winterthur</div></div>
+      <div class="sb"><div class="sb-ic">📊</div><div class="sb-n">83<span style="font-size:26px;color:var(--w3)">%</span></div><div class="sb-l">Passquote</div><div class="sb-c">Liga-Ø: ~78%</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     INSTAGRAM BUTTON
+══════════════════════════════════════ -->
+<div class="ig-banner bdr">
+  <div class="container">
+    <div class="ig-banner-inner reveal">
+      <div class="ig-banner-left">
+        <div class="ig-banner-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+        </div>
+        <div>
+          <div class="ig-banner-handle">@miguelreichmuth</div>
+          <div class="ig-banner-sub">FC Zürich · #38 · Mittelfeld</div>
+        </div>
+      </div>
+      <a href="https://www.instagram.com/miguelreichmuth/" target="_blank" class="ig-banner-btn">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+        Auf Instagram folgen
+      </a>
+    </div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════
+     DNA
+══════════════════════════════════════ -->
+<section id="dna" class="bdr">
+  <div class="container">
+    <p class="sec-ey reveal"><i></i>Spieleranalyse</p>
+    <h2 class="sec-ttl reveal">Spieler<br>DNA</h2>
+    <div class="dna-layout">
+      <div style="display:flex;flex-direction:column;gap:20px" class="reveal-l">
+        <div class="chart-card">
+          <p class="cc-label">Attribut-Radar vs. Liga-Ø</p>
+          <canvas id="radarChart" style="max-height:280px"></canvas>
+        </div>
+        <div class="chart-card">
+          <p class="cc-label">Marktwert-Entwicklung</p>
+          <canvas id="mvChart" style="max-height:200px"></canvas>
+          <p style="font-family:var(--mono);font-size:8px;letter-spacing:.14em;color:var(--w3);margin-top:10px;text-align:right;opacity:.5">Quelle: Transfermarkt</p>
+        </div>
+      </div>
+      <div class="chart-card reveal-r">
+        <p class="cc-label" style="margin-bottom:20px">Attribute im Detail</p>
+        <div class="attrs-g">
+          <div class="ar"><span class="an">Pressing</span><div class="ab"><div class="af" data-w="93"></div></div><span class="av">93</span></div>
+          <div class="ar"><span class="an">Balleroberung</span><div class="ab"><div class="af" data-w="90"></div></div><span class="av">90</span></div>
+          <div class="ar"><span class="an">Passquote</span><div class="ab"><div class="af" data-w="84"></div></div><span class="av">84</span></div>
+          <div class="ar"><span class="an">Ausdauer</span><div class="ab"><div class="af" data-w="92"></div></div><span class="av">92</span></div>
+          <div class="ar"><span class="an">Zweikampf</span><div class="ab"><div class="af" data-w="86"></div></div><span class="av">86</span></div>
+          <div class="ar"><span class="an">Spielintelligenz</span><div class="ab"><div class="af" data-w="88"></div></div><span class="av">88</span></div>
+          <div class="ar"><span class="an">Antizipation</span><div class="ab"><div class="af" data-w="85"></div></div><span class="av">85</span></div>
+          <div class="ar"><span class="an">Laufbereitschaft</span><div class="ab"><div class="af" data-w="95"></div></div><span class="av">95</span></div>
+          <div class="ar"><span class="an">Schnelligkeit</span><div class="ab"><div class="af" data-w="79"></div></div><span class="av">79</span></div>
+          <div class="ar"><span class="an">Torabschluss</span><div class="ab"><div class="af" data-w="62"></div></div><span class="av">62</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     POSITION / PITCH
+══════════════════════════════════════ -->
+<section id="position" class="alt bdr">
+  <div class="container">
+    <p class="sec-ey reveal"><i></i>Positionsprofil</p>
+    <h2 class="sec-ttl reveal">Auf dem<br>Platz</h2>
+    <div class="pos-layout">
+      <div class="pitch-card reveal-l">
+        <p class="cc-label" style="margin-bottom:16px">Heatmap — Zentrales Mittelfeld</p>
+        <svg class="pitch-svg" viewBox="0 0 200 300" xmlns="http://www.w3.org/2000/svg">
+          <rect width="200" height="300" rx="4" fill="rgba(10,28,18,0.95)" stroke="rgba(45,255,143,0.22)" stroke-width="1.5"/>
+          <rect x="0" y="0" width="200" height="33" fill="rgba(45,255,143,0.035)"/>
+          <rect x="0" y="66" width="200" height="33" fill="rgba(45,255,143,0.035)"/>
+          <rect x="0" y="132" width="200" height="33" fill="rgba(45,255,143,0.035)"/>
+          <rect x="0" y="198" width="200" height="33" fill="rgba(45,255,143,0.035)"/>
+          <rect x="0" y="264" width="200" height="33" fill="rgba(45,255,143,0.035)"/>
+          <line x1="0" y1="150" x2="200" y2="150" stroke="rgba(45,255,143,0.28)" stroke-width="1"/>
+          <circle cx="100" cy="150" r="30" fill="none" stroke="rgba(45,255,143,0.22)" stroke-width="1"/>
+          <circle cx="100" cy="150" r="2" fill="rgba(45,255,143,0.5)"/>
+          <rect x="40" y="0" width="120" height="50" fill="none" stroke="rgba(45,255,143,0.22)" stroke-width="1"/>
+          <rect x="40" y="250" width="120" height="50" fill="none" stroke="rgba(45,255,143,0.22)" stroke-width="1"/>
+          <rect x="70" y="0" width="60" height="18" fill="none" stroke="rgba(45,255,143,0.15)" stroke-width="1"/>
+          <rect x="70" y="282" width="60" height="18" fill="none" stroke="rgba(45,255,143,0.15)" stroke-width="1"/>
+          <!-- heatmap blobs -->
+          <ellipse cx="100" cy="162" rx="42" ry="32" fill="rgba(0,56,168,0.2)"/>
+          <ellipse cx="100" cy="160" rx="26" ry="20" fill="rgba(26,111,255,0.22)"/>
+          <ellipse cx="100" cy="158" rx="12" ry="9" fill="rgba(91,155,255,0.42)"/>
+          <ellipse cx="148" cy="142" rx="18" ry="14" fill="rgba(0,56,168,0.09)"/>
+          <ellipse cx="55" cy="148" rx="14" ry="12" fill="rgba(0,56,168,0.07)"/>
+          <!-- player dot -->
+          <circle cx="100" cy="157" r="9" fill="rgba(0,56,168,0.85)" stroke="rgba(91,155,255,0.9)" stroke-width="2"/>
+          <text x="100" y="161" text-anchor="middle" font-family="sans-serif" font-size="8" font-weight="bold" fill="white">38</text>
+          <!-- teammates -->
+          <circle cx="50" cy="232" r="5" fill="rgba(238,242,255,0.18)" stroke="rgba(238,242,255,0.32)" stroke-width="1"/>
+          <circle cx="100" cy="238" r="5" fill="rgba(238,242,255,0.18)" stroke="rgba(238,242,255,0.32)" stroke-width="1"/>
+          <circle cx="150" cy="232" r="5" fill="rgba(238,242,255,0.18)" stroke="rgba(238,242,255,0.32)" stroke-width="1"/>
+          <circle cx="28" cy="170" r="5" fill="rgba(238,242,255,0.18)" stroke="rgba(238,242,255,0.32)" stroke-width="1"/>
+          <circle cx="172" cy="170" r="5" fill="rgba(238,242,255,0.18)" stroke="rgba(238,242,255,0.32)" stroke-width="1"/>
+          <circle cx="60" cy="168" r="5" fill="rgba(238,242,255,0.18)" stroke="rgba(238,242,255,0.32)" stroke-width="1"/>
+          <circle cx="140" cy="168" r="5" fill="rgba(238,242,255,0.18)" stroke="rgba(238,242,255,0.32)" stroke-width="1"/>
+          <circle cx="100" cy="272" r="5" fill="rgba(238,242,255,0.12)" stroke="rgba(238,242,255,0.22)" stroke-width="1"/>
+          <!-- opponents -->
+          <circle cx="70" cy="52" r="5" fill="rgba(255,80,80,0.28)" stroke="rgba(255,80,80,0.5)" stroke-width="1"/>
+          <circle cx="130" cy="52" r="5" fill="rgba(255,80,80,0.28)" stroke="rgba(255,80,80,0.5)" stroke-width="1"/>
+          <circle cx="100" cy="68" r="5" fill="rgba(255,80,80,0.28)" stroke="rgba(255,80,80,0.5)" stroke-width="1"/>
+          <!-- movement arrows -->
+          <defs><marker id="arh" markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto"><path d="M0,0 L0,6 L6,3z" fill="rgba(91,155,255,0.6)"/></marker></defs>
+          <path d="M100 157 L122 122" stroke="rgba(91,155,255,0.45)" stroke-width="1.5" stroke-dasharray="4 3" fill="none" marker-end="url(#arh)"/>
+          <path d="M100 157 L74 132" stroke="rgba(91,155,255,0.35)" stroke-width="1.5" stroke-dasharray="4 3" fill="none"/>
+        </svg>
+        <p class="pitch-tag">Heatmap & Bewegungsprofil</p>
+      </div>
+      <div class="pos-rows reveal-r">
+        <div class="pos-row"><div class="pos-ic bl">🔄</div><div class="pos-body"><div class="pos-nm">Ballkontakte / Spiel</div><div class="pos-sb">Liga-Ø: 52</div></div><div class="pos-val">68</div></div>
+        <div class="pos-row"><div class="pos-ic gr">💪</div><div class="pos-body"><div class="pos-nm">Balleroberungen / Spiel</div><div class="pos-sb">Saisonschnitt</div></div><div class="pos-val">7.4</div></div>
+        <div class="pos-row"><div class="pos-ic bl">📐</div><div class="pos-body"><div class="pos-nm">Pässe / Spiel</div><div class="pos-sb">Kurz- & Mittelpässe</div></div><div class="pos-val">44</div></div>
+        <div class="pos-row"><div class="pos-ic gd">📏</div><div class="pos-body"><div class="pos-nm">km gelaufen / Spiel</div><div class="pos-sb">Top 5% der Liga</div></div><div class="pos-val">11.4</div></div>
+        <div class="pos-row"><div class="pos-ic gr">🏆</div><div class="pos-body"><div class="pos-nm">Zweikampfquote</div><div class="pos-sb">Gewonnene Duelle</div></div><div class="pos-val">61%</div></div>
+        <div class="pos-row"><div class="pos-ic bl">🎯</div><div class="pos-body"><div class="pos-nm">Pressings ausgelöst</div><div class="pos-sb">Pressing-Intensität</div></div><div class="pos-val">9.2</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     VIDEO HIGHLIGHTS
+══════════════════════════════════════ -->
+<section id="videos" class="bdr">
+  <div class="container">
+    <p class="sec-ey reveal"><i></i>Video</p>
+    <h2 class="sec-ttl reveal">Video<br>Highlights</h2>
+    <div class="vid-grid reveal">
+      <div class="vid-card" onclick="showToast('▶ Video wird geladen...')">
+        <div class="vid-thumb" style="background:linear-gradient(135deg,#0c1840,#0038A8)">
+          <span style="font-size:48px">⚡</span>
+          <div class="vid-play"><div class="vid-play-btn"><svg width="18" height="18" viewBox="0 0 24 24" fill="white"><polygon points="5,3 19,12 5,21"/></svg></div></div>
+        </div>
+        <div class="vid-info">
+          <div class="vid-date">08. März 2026 · Super League</div>
+          <div class="vid-title">16 Balleroberungen vs. Winterthur</div>
+          <div class="vid-comp">FC Zürich 2–1 FC Winterthur</div>
+          <div class="vid-tags"><span class="vid-tag">Highlight</span><span class="vid-tag">Assist</span></div>
+        </div>
+      </div>
+      <div class="vid-card" onclick="showToast('▶ Video wird geladen...')">
+        <div class="vid-thumb" style="background:linear-gradient(135deg,#0a2200,#1a4400)">
+          <span style="font-size:48px">🎖️</span>
+          <div class="vid-play"><div class="vid-play-btn"><svg width="18" height="18" viewBox="0 0 24 24" fill="white"><polygon points="5,3 19,12 5,21"/></svg></div></div>
+        </div>
+        <div class="vid-info">
+          <div class="vid-date">19. August 2023 · Swiss Cup</div>
+          <div class="vid-title">Profidebüt — Swiss Cup 2023</div>
+          <div class="vid-comp">FC Red Star Zürich 0–2 FCZ</div>
+          <div class="vid-tags"><span class="vid-tag">Debüt</span><span class="vid-tag">Cup</span></div>
+        </div>
+      </div>
+      <div class="vid-card" onclick="showToast('▶ Video wird geladen...')">
+        <div class="vid-thumb" style="background:linear-gradient(135deg,#001020,#003050)">
+          <span style="font-size:48px">📜</span>
+          <div class="vid-play"><div class="vid-play-btn"><svg width="18" height="18" viewBox="0 0 24 24" fill="white"><polygon points="5,3 19,12 5,21"/></svg></div></div>
+        </div>
+        <div class="vid-info">
+          <div class="vid-date">26. September 2025 · FCZ TV</div>
+          <div class="vid-title">Vertragsverlängerung bis 2030</div>
+          <div class="vid-comp">FCZ Offiziell — Presskonferenz</div>
+          <div class="vid-tags"><span class="vid-tag">FCZ TV</span><span class="vid-tag">Vertrag</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     PHYSICAL PROFILE
+══════════════════════════════════════ -->
+<section id="physical" class="alt bdr">
+  <div class="container">
+    <p class="sec-ey reveal"><i></i>Körperprofil</p>
+    <h2 class="sec-ttl reveal">Physisches<br>Profil</h2>
+    <div class="phys-layout reveal">
+      <div class="phys-silhouette">
+        <div class="phys-num">1,71</div>
+        <div class="phys-unit">Meter</div>
+        <svg viewBox="0 0 80 200" xmlns="http://www.w3.org/2000/svg" style="width:80px;opacity:.35">
+          <circle cx="40" cy="20" r="14" fill="none" stroke="rgba(91,155,255,0.6)" stroke-width="1.5"/>
+          <line x1="40" y1="34" x2="40" y2="110" stroke="rgba(91,155,255,0.6)" stroke-width="1.5"/>
+          <line x1="12" y1="60" x2="68" y2="60" stroke="rgba(91,155,255,0.6)" stroke-width="1.5"/>
+          <line x1="40" y1="110" x2="18" y2="180" stroke="rgba(91,155,255,0.6)" stroke-width="1.5"/>
+          <line x1="40" y1="110" x2="62" y2="180" stroke="rgba(91,155,255,0.6)" stroke-width="1.5"/>
+          <line x1="12" y1="60" x2="5" y2="100" stroke="rgba(91,155,255,0.6)" stroke-width="1.5"/>
+          <line x1="68" y1="60" x2="75" y2="100" stroke="rgba(91,155,255,0.6)" stroke-width="1.5"/>
+        </svg>
+      </div>
+      <div>
+        <div class="phys-grid">
+          <div class="phys-box"><span class="phys-box-val">171</span><span class="phys-box-label">Grösse (cm)</span><div class="phys-box-bar"></div></div>
+          <div class="phys-box"><span class="phys-box-val">71</span><span class="phys-box-label">Gewicht (kg)</span><div class="phys-box-bar"></div></div>
+          <div class="phys-box"><span class="phys-box-val">22</span><span class="phys-box-label">Alter (Jahre)</span><div class="phys-box-bar"></div></div>
+          <div class="phys-box"><span class="phys-box-val">11.4</span><span class="phys-box-label">km / Spiel</span><div class="phys-box-bar"></div></div>
+          <div class="phys-box"><span class="phys-box-val">24.2</span><span class="phys-box-label">BMI</span><div class="phys-box-bar"></div></div>
+          <div class="phys-box"><span class="phys-box-val">R</span><span class="phys-box-label">Spielfuss</span><div class="phys-box-bar"></div></div>
+        </div>
+
+        <p style="font-family:var(--mono);font-size:9px;letter-spacing:.2em;color:var(--w3);text-transform:uppercase;margin:28px 0 16px">Vergleich mit Liga-Durchschnitt</p>
+        <div class="compare-wrap">
+          <div class="cmp-row"><span class="cmp-label">km/Spiel</span><div class="cmp-track"><div class="cmp-me" data-val="76" style="width:0"></div><div class="cmp-avg-line" style="left:65%"></div></div><span class="cmp-val">11.4</span><span class="cmp-note" style="color:var(--gr)">↑ Top 5%</span></div>
+          <div class="cmp-row"><span class="cmp-label">Recoveries</span><div class="cmp-track"><div class="cmp-me" data-val="82" style="width:0"></div><div class="cmp-avg-line" style="left:55%"></div></div><span class="cmp-val">7.4</span><span class="cmp-note" style="color:var(--gr)">↑ +34%</span></div>
+          <div class="cmp-row"><span class="cmp-label">Passquote</span><div class="cmp-track"><div class="cmp-me" data-val="72" style="width:0"></div><div class="cmp-avg-line" style="left:67%"></div></div><span class="cmp-val">83%</span><span class="cmp-note" style="color:var(--bll)">↑ +5%</span></div>
+          <div class="cmp-row"><span class="cmp-label">Pressing</span><div class="cmp-track"><div class="cmp-me" data-val="88" style="width:0"></div><div class="cmp-avg-line" style="left:60%"></div></div><span class="cmp-val">9.2</span><span class="cmp-note" style="color:var(--gr)">↑ Top 3%</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     MATCH LOG
+══════════════════════════════════════ -->
+<section id="matchlog" class="bdr">
+  <div class="container">
+    <p class="sec-ey reveal"><i></i>Letzte Partien</p>
+    <h2 class="sec-ttl reveal">Match<br>Protokoll</h2>
+    <div class="form-row reveal">
+      <span class="form-label">Aktuelle Form:</span>
+      <div class="fdot w">W</div><div class="fdot d">D</div><div class="fdot l">L</div>
+      <div class="fdot w">W</div><div class="fdot w">W</div><div class="fdot d">D</div>
+    </div>
+    <div class="match-g reveal">
+      <div class="mc win"><div class="mc-top"><span class="mc-res win">WIN</span><span class="mc-comp">Super League</span><span class="mc-date">08.03.26</span></div><div class="mc-score">2–1</div><div class="mc-teams">FCZ vs. FC Winterthur</div><div class="mc-stats"><div class="mc-stat">Pässe <span>52</span></div><div class="mc-stat">Eroerungen <span>16</span></div><div class="mc-stat">1 Assist</div></div><div class="rating"><div class="r-circle hi">9.1</div></div></div>
+      <div class="mc draw"><div class="mc-top"><span class="mc-res draw">DRAW</span><span class="mc-comp">Super League</span><span class="mc-date">01.03.26</span></div><div class="mc-score">1–1</div><div class="mc-teams">Young Boys vs. FCZ</div><div class="mc-stats"><div class="mc-stat">Pässe <span>44</span></div><div class="mc-stat">Eroberungen <span>8</span></div><div class="mc-stat">90 Min.</div></div><div class="rating"><div class="r-circle mi">7.2</div></div></div>
+      <div class="mc loss"><div class="mc-top"><span class="mc-res loss">LOSS</span><span class="mc-comp">Super League</span><span class="mc-date">22.02.26</span></div><div class="mc-score">0–2</div><div class="mc-teams">FCZ vs. Basel</div><div class="mc-stats"><div class="mc-stat">Pässe <span>38</span></div><div class="mc-stat">Eroberungen <span>9</span></div><div class="mc-stat">68 Min.</div></div><div class="rating"><div class="r-circle lo">6.5</div></div></div>
+      <div class="mc win"><div class="mc-top"><span class="mc-res win">WIN</span><span class="mc-comp">Swiss Cup</span><span class="mc-date">15.02.26</span></div><div class="mc-score">3–0</div><div class="mc-teams">FCZ vs. Luzern</div><div class="mc-stats"><div class="mc-stat">Pässe <span>61</span></div><div class="mc-stat">Eroberungen <span>11</span></div><div class="mc-stat">90 Min.</div></div><div class="rating"><div class="r-circle hi">8.4</div></div></div>
+      <div class="mc win"><div class="mc-top"><span class="mc-res win">WIN</span><span class="mc-comp">Super League</span><span class="mc-date">08.02.26</span></div><div class="mc-score">2–0</div><div class="mc-teams">Servette vs. FCZ</div><div class="mc-stats"><div class="mc-stat">Pässe <span>47</span></div><div class="mc-stat">Eroberungen <span>10</span></div><div class="mc-stat">90 Min.</div></div><div class="rating"><div class="r-circle hi">7.8</div></div></div>
+      <div class="mc draw"><div class="mc-top"><span class="mc-res draw">DRAW</span><span class="mc-comp">Super League</span><span class="mc-date">01.02.26</span></div><div class="mc-score">0–0</div><div class="mc-teams">FCZ vs. GC Zürich</div><div class="mc-stats"><div class="mc-stat">Pässe <span>56</span></div><div class="mc-stat">Eroberungen <span>13</span></div><div class="mc-stat">90 Min.</div></div><div class="rating"><div class="r-circle mi">7.0</div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     CAREER TIMELINE
+══════════════════════════════════════ -->
+<section id="timeline" class="alt bdr">
+  <div class="container">
+    <p class="sec-ey reveal"><i></i>Werdegang</p>
+    <h2 class="sec-ttl reveal">Karriere<br>Timeline</h2>
+    <div class="tl-wrap">
+
+      <div class="milestone odd">
+        <div class="m-l m-content"><div class="m-card"><div class="m-yr">2003</div><span class="m-badge">Ursprung</span><div class="m-title">Geburt in Zug, Schweiz</div><div class="m-desc">Miguel Raffael Reichmuth kommt am 26. Oktober zur Welt. Schweizer Mutter, chilenische Wurzeln mütterlicherseits. Aufgewachsen in Ibach.</div></div></div>
+        <div class="m-c"><div class="m-vl" style="min-height:30px"></div><div class="m-node"><div class="m-dot a"></div></div><div class="m-vl"></div></div>
+        <div class="m-r m-content"></div>
+      </div>
+
+      <div class="milestone even">
+        <div class="m-l m-content"></div>
+        <div class="m-c"><div class="m-vl"></div><div class="m-node"><div class="m-dot a"></div></div><div class="m-vl"></div></div>
+        <div class="m-r m-content"><div class="m-card"><div class="m-yr">2016</div><span class="m-badge">Akademie</span><div class="m-title">FC Zürich Nachwuchsakademie</div><div class="m-desc">Wechsel von FC Ibach in die Nachwuchsabteilung des FC Zürich. Beginn einer 10-jährigen Ausbildung beim Spitzenklub.</div></div></div>
+      </div>
+
+      <div class="milestone odd">
+        <div class="m-l m-content"><div class="m-card"><div class="m-yr">2019</div><span class="m-badge">Nationalteam</span><div class="m-title">Schweizer U17-Nationalmannschaft</div><div class="m-desc">Einsätze in der UEFA U17-EM-Qualifikation. 3 Länderspiele, 0 Tore. Erste Erfahrungen auf internationalem Niveau.</div></div></div>
+        <div class="m-c"><div class="m-vl"></div><div class="m-node"><div class="m-dot a"></div></div><div class="m-vl"></div></div>
+        <div class="m-r m-content"></div>
+      </div>
+
+      <div class="milestone even">
+        <div class="m-l m-content"></div>
+        <div class="m-c"><div class="m-vl"></div><div class="m-node"><div class="m-dot a"></div></div><div class="m-vl"></div></div>
+        <div class="m-r m-content"><div class="m-card"><div class="m-yr">2022</div><span class="m-badge">Profi</span><div class="m-title">Eintritt Profikader FCZ</div><div class="m-desc">14. September 2022: Offizieller Wechsel in den Profikader. Erster Profivertrag beim FC Zürich unterschrieben.</div></div></div>
+      </div>
+
+      <div class="milestone odd">
+        <div class="m-l m-content"><div class="m-card"><div class="m-yr">2023</div><span class="m-badge">Debüt</span><div class="m-title">Profidebüt — Swiss Cup</div><div class="m-desc">19. August 2023: 2:0-Sieg gegen FC Red Star Zürich im Schweizer Cup. Der erste Auftritt als Profi ist offiziell.</div></div></div>
+        <div class="m-c"><div class="m-vl"></div><div class="m-node"><div class="m-dot a"></div></div><div class="m-vl"></div></div>
+        <div class="m-r m-content"></div>
+      </div>
+
+      <div class="milestone even">
+        <div class="m-l m-content"></div>
+        <div class="m-c"><div class="m-vl"></div><div class="m-node"><div class="m-dot a"></div></div><div class="m-vl"></div></div>
+        <div class="m-r m-content"><div class="m-card"><div class="m-yr">2025</div><span class="m-badge">Vertrag</span><div class="m-title">Verlängerung bis 2030 — FIFA-Max</div><div class="m-desc">26. September 2025: Zweite Verlängerung auf das FIFA-Maximum bis 30.06.2030. Das grösste Vertrauenssignal des FCZ.</div></div></div>
+      </div>
+
+      <div class="milestone odd">
+        <div class="m-l m-content"><div class="m-card"><div class="m-yr now">2026</div><span class="m-badge now">Jetzt</span><div class="m-title">Stammkraft Super League</div><div class="m-desc">22 Jahre alt — 14 Einsätze, 961 Minuten, dominant im zentralen Mittelfeld. Interimstrainer Hediger: "Noch nie ein schlechtes Spiel von ihm gesehen."</div></div></div>
+        <div class="m-c"><div class="m-vl"></div><div class="m-node"><div class="m-dot now"></div></div></div>
+        <div class="m-r m-content"></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     ACHIEVEMENTS
+══════════════════════════════════════ -->
+<section id="achievements" class="bdr">
+  <div class="container">
+    <p class="sec-ey reveal"><i></i>Erfolge</p>
+    <h2 class="sec-ttl reveal">Aus<br>zeichnungen</h2>
+    <div class="ach-g reveal">
+      <div class="ach"><span class="ach-ic">🇨🇭</span><div class="ach-ttl">Super League Profi</div><div class="ach-dsc">Stammkraft im FC Zürich Profikader der Brack Super League</div><span class="ach-yr">2023 —</span></div>
+      <div class="ach"><span class="ach-ic">📜</span><div class="ach-ttl">FIFA-Maximalvertrag</div><div class="ach-dsc">Verlängerung bis 2030 — die gesetzlich maximal mögliche Laufzeit</div><span class="ach-yr">Sep 2025</span></div>
+      <div class="ach"><span class="ach-ic">🇨🇭</span><div class="ach-ttl">U17-Nationalspieler</div><div class="ach-dsc">Schweizer U17-Nationalmannschaft, 3 Länderspiele, UEFA-Qualifikation</div><span class="ach-yr">2019</span></div>
+      <div class="ach"><span class="ach-ic">⚡</span><div class="ach-ttl">16 Balleroberungen</div><div class="ach-dsc">Saisonrekord im FCZ-Kader — einzelne Spielleistung vs. FC Winterthur</div><span class="ach-yr">Dez 2025</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     STRENGTHS
+══════════════════════════════════════ -->
+<section id="strengths" class="alt bdr">
+  <div class="container">
+    <p class="sec-ey reveal"><i></i>Scouting</p>
+    <h2 class="sec-ttl reveal">Stärken &<br>Profil</h2>
+    <div class="strengths-layout">
+      <div class="strengths-list reveal-l">
+        <div class="str-item"><div class="str-ic">🏃</div><div class="str-body"><h4>Ausserordentliche Laufbereitschaft</h4><p>Top 5% der Super League in Kilometern pro Spiel. 11,4 km im Schnitt — unermüdlich über 90 Minuten.</p></div></div>
+        <div class="str-item"><div class="str-ic">💪</div><div class="str-body"><h4>Balleroberungsmaschine</h4><p>Bis zu 16 Balleroberungen in einem Spiel — Saisonrekord im FCZ-Kader. Überdurchschnittlich in jedem Spiel.</p></div></div>
+        <div class="str-item"><div class="str-ic">🧠</div><div class="str-body"><h4>Hohes räumliches Bewusstsein</h4><p>Kluge Pässe ohne direkten Blickkontakt, antizipiert Laufwege — denkt schneller als die meisten Gegner.</p></div></div>
+        <div class="str-item"><div class="str-ic">🔥</div><div class="str-body"><h4>Mentalität & Konstanz</h4><p>Trainer Hediger: "Noch nie ein schlechtes Spiel von ihm gesehen." Kein Auf und Ab — verlässlich in jeder Partie.</p></div></div>
+      </div>
+      <div class="reveal-r">
+        <div class="quote-block" style="margin-bottom:20px">
+          <span class="q-mark">"</span>
+          <p class="q-text">Ich habe noch nie ein schlechtes Spiel von ihm gesehen.</p>
+          <p class="q-src">— Dennis Hediger, Interimstrainer FC Zürich, Dezember 2025</p>
+        </div>
+        <div class="chart-card">
+          <p class="cc-label" style="margin-bottom:16px">Saisonbewertung Ø (alle Spiele)</p>
+          <canvas id="ratingChart" style="max-height:160px"></canvas>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     PRESS
+══════════════════════════════════════ -->
+<section id="press" class="bdr">
+  <div class="container">
+    <p class="sec-ey reveal"><i></i>Medien</p>
+    <h2 class="sec-ttl reveal">Presse &<br>Medien</h2>
+    <div class="news-g reveal">
+      <div class="nc"><div class="nc-src">Blick <span class="nc-date">Dez 2025</span></div><div class="nc-ttl">Jetzt brilliert beim FCZ der nächste Youngster</div><div class="nc-exc">Ein Assist, meiste gespielte Pässe, meiste Balleroberungen — Miguel Reichmuth zeigte eine dominante Leistung gegen Winterthur.</div><span class="nc-tag">Spotlight</span></div>
+      <div class="nc"><div class="nc-src">FC Zürich <span class="nc-date">Sep 2025</span></div><div class="nc-ttl">Reichmuth verlängert bis 2030 — FIFA-Maximum</div><div class="nc-exc">Der FC Zürich verlängert den Vertrag mit Miguel Reichmuth auf die maximal mögliche Laufzeit bis 30. Juni 2030.</div><span class="nc-tag">Transfer</span></div>
+      <div class="nc"><div class="nc-src">Transfermarkt <span class="nc-date">Mrz 2026</span></div><div class="nc-ttl">Profil: Miguel Reichmuth — Zentrales Mittelfeld</div><div class="nc-exc">Marktwert ~500 Tsd. €, Vertrag bis 2030, Berater Gold Kick SA. Einer der interessantesten Schweizer Youngster.</div><span class="nc-tag">Profil</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     SEASON TABLE
+══════════════════════════════════════ -->
+<section id="season" class="alt bdr">
+  <div class="container">
+    <p class="sec-ey reveal"><i></i>Statistik</p>
+    <h2 class="sec-ttl reveal">Alle<br>Saisons</h2>
+    <table class="tbl reveal">
+      <thead><tr>
+        <th>Saison</th><th>Verein</th><th>Wettbewerb</th>
+        <th class="nc2">Spiele</th><th class="nc2">Tore</th>
+        <th class="nc2">Assists</th><th class="nc2">Min.</th><th class="nc2">Ø Rating</th>
+      </tr></thead>
+      <tbody>
+        <tr class="hl"><td class="sc">25/26</td><td class="tc">FC Zürich</td><td>Super League</td><td class="nc2">14</td><td class="nc2">0</td><td class="nc2">1</td><td class="nc2">961'</td><td class="nc2">7.6</td></tr>
+        <tr><td class="sc">24/25</td><td class="tc">FC Zürich</td><td>Super League</td><td class="nc2">12</td><td class="nc2">0</td><td class="nc2">0</td><td class="nc2">576'</td><td class="nc2">6.9</td></tr>
+        <tr><td class="sc">23/24</td><td class="tc">FC Zürich</td><td>Super League</td><td class="nc2">8</td><td class="nc2">0</td><td class="nc2">1</td><td class="nc2">284'</td><td class="nc2">7.1</td></tr>
+        <tr><td class="sc">23/24</td><td class="tc">FC Zürich</td><td>Swiss Cup</td><td class="nc2">3</td><td class="nc2">0</td><td class="nc2">0</td><td class="nc2">162'</td><td class="nc2">7.3</td></tr>
+        <tr><td class="sc">22/23</td><td class="tc">FC Zürich U21</td><td>Promotion League</td><td class="nc2">22</td><td class="nc2">1</td><td class="nc2">3</td><td class="nc2">1'580'</td><td class="nc2">7.4</td></tr>
+        <tr><td class="sc">21/22</td><td class="tc">FC Zürich U21</td><td>Promotion League</td><td class="nc2">18</td><td class="nc2">0</td><td class="nc2">2</td><td class="nc2">1'210'</td><td class="nc2">7.0</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     FOOTER
+══════════════════════════════════════ -->
+<footer>
+  <div class="container">
+    <div class="ft-g">
+      <div class="ft-brand">
+        <div class="ft-nm">MIGUEL<br>REICHMUTH</div>
+        <p>FC Zürich · #38 · Mittelfeld · 2003 –</p>
+      </div>
+      <div class="ft-col">
+        <h4>Sektionen</h4>
+        <a class="ft-lnk" href="#stats">Statistiken</a>
+        <a class="ft-lnk" href="#social">Social Hub</a>
+        <a class="ft-lnk" href="#gallery">Gallery</a>
+        <a class="ft-lnk" href="#matchlog">Match Log</a>
+        <a class="ft-lnk" href="#timeline">Karriere</a>
+      </div>
+      <div class="ft-col">
+        <h4>Links</h4>
+        <a class="ft-lnk" href="https://www.fcz.ch" target="_blank">FC Zürich</a>
+        <a class="ft-lnk" href="https://www.transfermarkt.ch/miguel-reichmuth/profil/spieler/539809" target="_blank">Transfermarkt</a>
+        <a class="ft-lnk" onclick="openIG()">Instagram</a>
+        <a class="ft-lnk" href="https://fbref.com/en/players/e7b6ff46/Miguel-Reichmuth" target="_blank">FBref</a>
+      </div>
+      <div class="ft-col">
+        <h4>Quellen</h4>
+        <p style="font-size:12px;color:var(--w3);line-height:1.6;font-weight:400">Daten: Transfermarkt, FBref, Blick, FC Zürich. Inoffizielles Karriereprofil. Kein Affiliation mit FC Zürich oder dem Spieler.</p>
+      </div>
+    </div>
+    <div class="ft-bot">
+      <span class="ft-copy">© 2026 Karriereprofil Miguel Reichmuth · Inoffiziell · Alle Daten: Transfermarkt, FBref, Blick</span>
+      <button class="nav-pill ig" onclick="openIG()" style="margin:0">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+        @miguelreichmuth
+      </button>
+    </div>
+  </div>
+</footer>
+
+<div class="toast" id="toast"></div>
+
+<!-- ══════════════════════════════════════
+     JAVASCRIPT
+══════════════════════════════════════ -->
+<script>
+// ── SCROLL PROGRESS ──
+const prog = document.getElementById('prog');
+const nav  = document.getElementById('nav');
+const sections = document.querySelectorAll('section[id]');
+const navLinks = document.querySelectorAll('.nl');
+
+window.addEventListener('scroll', () => {
+  const scrolled = (window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100;
+  prog.style.width = scrolled + '%';
+  nav.classList.toggle('scrolled', window.scrollY > 40);
+  let cur = '';
+  sections.forEach(s => { if (window.scrollY >= s.offsetTop - 80) cur = s.id; });
+  navLinks.forEach(l => l.classList.toggle('on', l.getAttribute('href') === '#' + cur));
+}, { passive: true });
+
+// ── MOBILE MENU ──
+function toggleMenu() {
+  document.getElementById('mobileMenu').classList.toggle('open');
+  const h = document.getElementById('ham');
+  const spans = h.querySelectorAll('span');
+  const isOpen = document.getElementById('mobileMenu').classList.contains('open');
+  spans[0].style.transform = isOpen ? 'rotate(45deg) translate(5px,5px)' : '';
+  spans[1].style.opacity   = isOpen ? '0' : '1';
+  spans[2].style.transform = isOpen ? 'rotate(-45deg) translate(5px,-5px)' : '';
+}
+function closeMenu() { document.getElementById('mobileMenu').classList.remove('open'); }
+
+// ── CLOCK ──
+function updateClock() {
+  const now = new Date().toLocaleTimeString('de-CH', { timeZone:'Europe/Zurich', hour:'2-digit', minute:'2-digit' });
+  document.getElementById('clockText').textContent = 'Zürich · ' + now;
+}
+updateClock();
+setInterval(updateClock, 10000);
+
+// ── TICKER ──
+const tItems = [
+  'Miguel Reichmuth · 14 Einsätze Saison 25/26 · Super League',
+  'Vertrag bis 30.06.2030 — FIFA-Maximum unterzeichnet Sep 2025',
+  '16 Balleroberungen vs. FC Winterthur — Saisonrekord',
+  'Dennis Hediger: "Noch nie ein schlechtes Spiel von ihm gesehen"',
+  'Marktwert: ~500 Tsd. € · Berater: Gold Kick SA',
+  'Profidebüt: 19. Aug. 2023 — Swiss Cup vs. FC Red Star Zürich',
+  '961 Minuten gespielt · Passquote 83% · Assist vs. Winterthur',
+  'FC Zürich Nachwuchs seit 2016 · Geburt 26.10.2003 in Zug',
+  'Bruder: Nils Reichmuth · FC Thun · Super League 25/26',
+  'Schweizer U17-Nationalmannschaft 2019 · 3 Länderspiele',
+];
+const tk = document.getElementById('tkInner');
+tk.innerHTML = [...tItems, ...tItems].map(t => `<div class="tki">${t}</div>`).join('');
+
+// ── INTERSECTION OBSERVER ──
+const io = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (!e.isIntersecting) return;
+    e.target.classList.add('vis');
+    e.target.querySelectorAll('.af').forEach(b => { setTimeout(() => b.style.width = b.dataset.w + '%', 150); });
+    e.target.querySelectorAll('.cmp-me').forEach(b => { setTimeout(() => b.style.width = b.dataset.val + '%', 200); });
+    e.target.querySelectorAll('.counter').forEach(c => {
+      const target = +c.dataset.t;
+      const step = target / (1800 / 16);
+      let n = 0;
+      const t = setInterval(() => { n = Math.min(n + step, target); c.textContent = Math.floor(n).toLocaleString('de-CH'); if (n >= target) clearInterval(t); }, 16);
+    });
+  });
+}, { threshold: 0.1 });
+
+document.querySelectorAll('.reveal,.reveal-l,.reveal-r').forEach(el => io.observe(el));
+
+const mio = new IntersectionObserver(entries => {
+  entries.forEach((e, i) => { if (e.isIntersecting) setTimeout(() => e.target.classList.add('vis'), i * 55); });
+}, { threshold: 0.2 });
+document.querySelectorAll('.m-card').forEach(el => mio.observe(el));
+
+
+// ── CHARTS ──
+const chartDefaults = {
+  responsive: true,
+  plugins: { legend: { labels: { color: 'rgba(238,242,255,.45)', font: { family: "'JetBrains Mono'", size: 9 }, boxWidth: 10 } } }
+};
+
+// Radar
+const rctx = document.getElementById('radarChart').getContext('2d');
+new Chart(rctx, {
+  type: 'radar',
+  data: {
+    labels: ['Pressing','Balleroberung','Pässe','Ausdauer','Zweikampf','Spielintelligenz','Antizipation','Laufen'],
+    datasets: [
+      { label: 'Reichmuth', data: [93,90,84,92,86,88,85,95], backgroundColor: 'rgba(0,56,168,.25)', borderColor: 'rgba(26,111,255,.9)', borderWidth: 2, pointBackgroundColor: 'rgba(91,155,255,1)', pointBorderColor: '#fff', pointRadius: 4 },
+      { label: 'Liga-Ø', data: [70,72,76,74,75,73,72,72], backgroundColor: 'rgba(255,255,255,.03)', borderColor: 'rgba(255,255,255,.15)', borderWidth: 1.5, borderDash: [4,4], pointBackgroundColor: 'rgba(255,255,255,.3)', pointRadius: 2 }
+    ]
+  },
+  options: { ...chartDefaults, scales: { r: { min: 50, max: 100, ticks: { display: false }, grid: { color: 'rgba(0,56,168,.18)' }, angleLines: { color: 'rgba(0,56,168,.18)' }, pointLabels: { color: 'rgba(238,242,255,.4)', font: { family: "'JetBrains Mono'", size: 8.5 } } } } }
+});
+
+// Market Value
+const mvctx = document.getElementById('mvChart').getContext('2d');
+new Chart(mvctx, {
+  type: 'line',
+  data: {
+    labels: ['21/22','22/23','23/24','24/25','25/26'],
+    datasets: [{ label: 'Marktwert (Tsd. €)', data: [80,200,400,700,500], fill: true, backgroundColor: 'rgba(0,56,168,.15)', borderColor: 'rgba(26,111,255,.85)', borderWidth: 2, pointBackgroundColor: '#1a6fff', pointRadius: 5, tension: 0.4 }]
+  },
+  options: { ...chartDefaults, scales: { x: { grid: { color: 'rgba(255,255,255,.04)' }, ticks: { color: 'rgba(238,242,255,.4)', font: { family: "'JetBrains Mono'", size: 9 } } }, y: { grid: { color: 'rgba(255,255,255,.04)' }, ticks: { color: 'rgba(238,242,255,.4)', font: { family: "'JetBrains Mono'", size: 9 }, callback: v => v + 'T' } } } }
+});
+
+// Rating bar chart
+const ratingCtx = document.getElementById('ratingChart').getContext('2d');
+new Chart(ratingCtx, {
+  type: 'bar',
+  data: {
+    labels: ['Aug','Sep','Okt','Nov','Dez','Jan','Feb','Mrz'],
+    datasets: [{ label: 'Ø Rating', data: [6.8,7.1,7.4,7.2,9.1,7.6,7.4,7.8], backgroundColor: 'rgba(26,111,255,.4)', borderColor: 'rgba(91,155,255,.8)', borderWidth: 1.5, borderRadius: 4 }]
+  },
+  options: { ...chartDefaults, scales: { x: { grid: { display: false }, ticks: { color: 'rgba(238,242,255,.35)', font: { family: "'JetBrains Mono'", size: 8 } } }, y: { min: 5, max: 10, grid: { color: 'rgba(255,255,255,.04)' }, ticks: { color: 'rgba(238,242,255,.35)', font: { family: "'JetBrains Mono'", size: 8 } } } } }
+});
+
+// ── SOCIAL ──
+function openIG() {
+  window.open('https://www.instagram.com/miguelreichmuth/', '_blank');
+  showToast('📱 Instagram @miguelreichmuth öffnet...');
+}
+
+// ── TOAST ──
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg; t.classList.add('show');
+  clearTimeout(t._timer);
+  t._timer = setTimeout(() => t.classList.remove('show'), 3200);
+}
+</script>
+</body>
+</html>
